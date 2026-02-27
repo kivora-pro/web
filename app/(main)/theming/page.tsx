@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import Navbar from '@/src/components/Navbar';
+import { buildIssueUrl } from '@/src/lib/issue';
 import { Code } from '@kivora/react';
 import { useState } from 'react';
 
@@ -565,6 +566,35 @@ export default function ThemingPage() {
 								{TAILWIND_CODE}
 							</Code>
 						</section>
+					</div>
+					{/* Issues */}
+					<div className='px-6 pb-6 mt-6'>
+						<div
+							className='rounded-2xl border border-white/8 p-8 flex flex-col md:flex-row items-start md:items-center gap-6'
+							style={{
+								background:
+									'linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.08))',
+							}}>
+							<div className='flex-1'>
+								<p className='text-sm font-semibold text-zinc-200 mb-1'>
+									¿Encontraste un bug o tienes una sugerencia?
+								</p>
+								<p className='text-xs text-zinc-500'>
+									Abre una issue en GitHub — el equipo siempre
+									está dispuesto a ayudar.
+								</p>
+							</div>
+							<a
+								href={buildIssueUrl('Theming')}
+								target='_blank'
+								rel='noopener noreferrer'
+								className='shrink-0 px-4 py-2 rounded-lg text-xs font-semibold text-white border border-white/10 hover:border-white/25 transition-all'
+								style={{
+									background: 'rgba(255,255,255,0.07)',
+								}}>
+								Open an issue →
+							</a>
+						</div>
 					</div>
 				</main>
 			</div>
