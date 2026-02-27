@@ -1,20 +1,21 @@
-'use client';
+﻿'use client';
 
 import Navbar from '@/src/components/Navbar';
+import { buildIssueUrl } from '@/src/lib/issue';
 import {
-    Carousel,
-    CarouselSlide,
-    Code,
-    DatePickerInput,
-    Dropzone,
-    ModalsProvider,
-    NotificationsProvider,
-    Slider,
-    SpotlightProvider,
-    Switch,
-    modals,
-    notifications,
-    spotlight,
+	Carousel,
+	CarouselSlide,
+	Code,
+	DatePickerInput,
+	Dropzone,
+	ModalsProvider,
+	Slider,
+	SpotlightProvider,
+	Switch,
+	Toaster,
+	modals,
+	spotlight,
+	toast,
 } from '@kivora/react';
 import React, { useState } from 'react';
 
@@ -204,11 +205,9 @@ function NotificationsPreview({ values }: { values: Record<string, any> }) {
 	return (
 		<button
 			onClick={() =>
-				notifications.show({
-					title: values.title as string,
-					message: values.message as string,
-					color: values.color as string,
-					autoClose: values.autoClose as number,
+				toast(values.title as string, {
+					description: values.message as string,
+					duration: values.autoClose as number,
 				})
 			}
 			className={`px-5 py-2.5 rounded-xl text-white text-sm font-semibold transition-colors ${cls}`}>
@@ -747,8 +746,7 @@ modals.openConfirm({
 		id: 'notifications',
 		name: 'Notifications',
 		status: 'stable',
-		importLine:
-			"import { NotificationsProvider, notifications } from '@kivora/react';",
+		importLine: "import { Toaster, toast } from '@kivora/react';",
 		description:
 			'Imperative notification system with a global queue. Show, update and hide notifications from anywhere. Supports auto-close, loading states and custom colors.',
 		preview: NotificationsPreview,
@@ -784,19 +782,19 @@ modals.openConfirm({
 		],
 		props: [
 			{
-				name: 'notifications.show(data)',
+				name: 'toast(title, options?)',
 				type: 'function â†’ id',
 				default: 'â€”',
 				description: 'Show a new notification. Returns the id.',
 			},
 			{
-				name: 'notifications.update({ id, ...data })',
+				name: 'toast.success / .error / .warning',
 				type: 'function',
 				default: 'â€”',
 				description: 'Update an existing notification by id.',
 			},
 			{
-				name: 'notifications.hide(id)',
+				name: 'toast.dismiss(id?)',
 				type: 'function',
 				default: 'â€”',
 				description: 'Hide a specific notification.',
@@ -838,29 +836,27 @@ modals.openConfirm({
 				description: 'Custom icon.',
 			},
 			{
-				name: 'NotificationsProvider position',
+				name: 'Toaster position',
 				type: '"top-left" | "top-right" | "bottom-left" | "bottom-right" | "top-center" | "bottom-center"',
 				default: '"bottom-right"',
-				description: 'Position of the notifications stack.',
+				description: 'Position of the toast stack.',
 			},
 		],
-		example: `// 1. Wrap your app (once in layout.tsx)
-import { NotificationsProvider } from '@kivora/react';
-<NotificationsProvider position="bottom-right"><App /></NotificationsProvider>
+		example: `// 1. Add Toaster once in layout.tsx
+import { Toaster } from '@kivora/react';
+<Toaster position="bottom-right" />
 
-// 2. Show from anywhere
-import { notifications } from '@kivora/react';
+// 2. Call toast from anywhere
+import { toast } from '@kivora/react';
 
-notifications.show({
-  title: 'File saved',
-  message: 'Your changes have been saved.',
-  color: 'emerald',
-  autoClose: 3000,
+toast('File saved', {
+  description: 'Your changes have been saved.',
+  duration: 3000,
 });
 
 // Loading â†’ success pattern
-const id = notifications.show({ loading: true, title: 'Uploadingâ€¦', autoClose: false });
-notifications.update({ id, loading: false, title: 'Done!', autoClose: 2000 });`,
+const id = toast.loading('Uploadingâ€¦', autoClose: false });
+toast.success('Done!', { id });`,
 		icon: (
 			<svg
 				className='w-5 h-5'
@@ -1312,7 +1308,7 @@ function ExtensionsContent() {
 										)}
 										{control.type === 'number' && (
 											<div className='flex items-center gap-3 flex-1'>
-																								<Slider
+												<Slider
 													min={control.min ?? 0}
 													max={control.max ?? 100}
 													step={control.step ?? 1}
@@ -1328,7 +1324,6 @@ function ExtensionsContent() {
 															val,
 														)
 													}
-													className='flex-1'
 													color='violet'
 													size='xs'
 												/>
@@ -1469,6 +1464,24 @@ function ExtensionsContent() {
 						</div>
 					</div>
 				</div>
+			{/* Issues */}
+			<div className='px-6 pb-6 mt-6'>
+				<div
+					className='rounded-2xl border border-white/8 p-8 flex flex-col md:flex-row items-start md:items-center gap-6'
+					style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.08))' }}>
+					<div className='flex-1'>
+						<p className='text-sm font-semibold text-zinc-200 mb-1'>¿Encontraste un bug o tienes una sugerencia?</p>
+						<p className='text-xs text-zinc-500'>Abre una issue en GitHub — el equipo siempre está dispuesto a ayudar.</p>
+					</div>
+					<a
+						href={buildIssueUrl('Extensions')}
+						target='_blank'
+						rel='noopener noreferrer'
+						className='shrink-0 px-4 py-2 rounded-lg text-xs font-semibold text-white border border-white/10 hover:border-white/25 transition-all'
+						style={{ background: 'rgba(255,255,255,0.07)' }}>Open an issue →
+					</a>
+				</div>
+			</div>
 			</main>
 		</div>
 	);
@@ -1481,46 +1494,50 @@ function ExtensionsContent() {
 export default function ExtensionsPage() {
 	const spotlightActions = [
 		{
-			title: 'Home',
+			id: 'home',
+			label: 'Home',
 			description: 'Go to the home page',
-			onTrigger: () => {},
+			onClick: () => {},
 		},
 		{
-			title: 'Components',
+			id: 'components',
+			label: 'Components',
 			description: 'Browse UI components',
-			onTrigger: () => {},
+			onClick: () => {},
 		},
 		{
-			title: 'Extensions',
+			id: 'extensions',
+			label: 'Extensions',
 			description: 'Browse extensions',
-			onTrigger: () => {},
+			onClick: () => {},
 		},
 		{
-			title: 'Getting started',
+			id: 'getting-started',
+			label: 'Getting started',
 			description: 'Quick start guide',
-			onTrigger: () => {},
+			onClick: () => {},
 		},
 		{
-			title: 'Theming',
+			id: 'theming',
+			label: 'Theming',
 			description: 'Customize the design system',
-			onTrigger: () => {},
+			onClick: () => {},
 		},
 	];
 
 	return (
 		<ModalsProvider>
-			<NotificationsProvider position='bottom-right'>
-				<SpotlightProvider
-					actions={spotlightActions}
-					searchProps={{
-						placeholder: 'Search pages and actionsâ€¦',
-					}}>
-					<div className='min-h-screen bg-[#09090b] text-zinc-100'>
-						<Navbar />
-						<ExtensionsContent />
-					</div>
-				</SpotlightProvider>
-			</NotificationsProvider>
+			<Toaster position='bottom-right' />
+			<SpotlightProvider
+				actions={spotlightActions}
+				searchProps={{
+					placeholder: 'Search pages and actionsâ€¦',
+				}}>
+				<div className='min-h-screen bg-[#09090b] text-zinc-100'>
+					<Navbar />
+					<ExtensionsContent />
+				</div>
+			</SpotlightProvider>
 		</ModalsProvider>
 	);
 }

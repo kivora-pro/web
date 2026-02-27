@@ -18,8 +18,9 @@ import {
 	useEffect,
 	useRef,
 	useState,
+	type ReactElement,
 } from 'react';
-import { type Translation, useLocale } from './i18n';
+import { useLocale, type Translation } from './i18n';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -713,7 +714,7 @@ function IconVite({ className }: { className?: string }) {
 
 const FRAMEWORK_ICONS: Record<
 	string,
-	(props: { className?: string }) => JSX.Element
+	(props: { className?: string }) => ReactElement
 > = {
 	React: IconReact,
 	'React Native': IconReact,
