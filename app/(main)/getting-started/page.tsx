@@ -1,103 +1,9 @@
-'use client';
+﻿'use client';
 
 import Navbar from '@/src/components/Navbar';
+import { Code } from '@kivora/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-interface CodeBlockProps {
-	code: string;
-	language?: string;
-}
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function useClipboardCopy(timeout = 2000) {
-	const [copied, setCopied] = useState(false);
-	const copy = (text: string) => {
-		navigator.clipboard.writeText(text).then(() => {
-			setCopied(true);
-			setTimeout(() => setCopied(false), timeout);
-		});
-	};
-	return { copied, copy };
-}
-
-// ─── Sub-components ──────────────────────────────────────────────────────────
-
-function CopyBtn({ text }: { text: string }) {
-	const { copied, copy } = useClipboardCopy();
-	return (
-		<button
-			onClick={() => copy(text)}
-			style={{
-				position: 'absolute',
-				top: '0.6rem',
-				right: '0.6rem',
-				background: copied
-					? 'rgba(16,185,129,0.12)'
-					: 'rgba(255,255,255,0.06)',
-				border: copied
-					? '1px solid rgba(16,185,129,0.3)'
-					: '1px solid rgba(255,255,255,0.12)',
-				color: copied ? '#6ee7b7' : '#a1a1aa',
-				borderRadius: '0.4rem',
-				padding: '0.2rem 0.55rem',
-				fontSize: '0.7rem',
-				fontFamily: 'var(--font-geist-mono, monospace)',
-				cursor: 'pointer',
-				transition: 'all 0.15s',
-				letterSpacing: '0.02em',
-			}}>
-			{copied ? '✓ Copiado' : 'Copiar'}
-		</button>
-	);
-}
-
-function CodeBlock({ code, language = 'bash' }: CodeBlockProps) {
-	return (
-		<div
-			style={{
-				position: 'relative',
-				background: '#09090b',
-				border: '1px solid rgba(255,255,255,0.08)',
-				borderRadius: '0.75rem',
-				padding: '1rem 1.1rem',
-				paddingRight: '5.5rem',
-			}}>
-			{language && (
-				<span
-					style={{
-						position: 'absolute',
-						top: '0.55rem',
-						left: '1.1rem',
-						fontSize: '0.65rem',
-						color: '#52525b',
-						fontFamily: 'var(--font-geist-mono, monospace)',
-						textTransform: 'uppercase',
-						letterSpacing: '0.06em',
-					}}>
-					{language}
-				</span>
-			)}
-			<pre
-				style={{
-					margin: 0,
-					marginTop: language ? '1rem' : 0,
-					fontFamily: 'var(--font-geist-mono, monospace)',
-					fontSize: '0.82rem',
-					lineHeight: 1.6,
-					color: '#e4e4e7',
-					whiteSpace: 'pre',
-					overflowX: 'auto',
-				}}>
-				<code>{code}</code>
-			</pre>
-			<CopyBtn text={code} />
-		</div>
-	);
-}
 
 function SectionAnchor({ id }: { id: string }) {
 	return (
@@ -199,10 +105,7 @@ function InstallTabs() {
 					</button>
 				))}
 			</div>
-			<CodeBlock
-				code={current.cmd}
-				language='bash'
-			/>
+			<Code block showLineNumbers copyable language='bash'>{current.cmd}</Code>
 		</div>
 	);
 }
@@ -443,9 +346,7 @@ export default function GettingStartedPage() {
 									}}>
 									app/layout.tsx — Next.js
 								</p>
-								<CodeBlock
-									language='tsx'
-									code={`// Importa los estilos base una sola vez
+								<Code block showLineNumbers copyable language='tsx'>{`// Importa los estilos base una sola vez
 import '@kivora/react/styles.css';
 
 export default function RootLayout({ children }) {
@@ -454,8 +355,7 @@ export default function RootLayout({ children }) {
       <body>{children}</body>
     </html>
   );
-}`}
-								/>
+}`}</Code>
 							</div>
 
 							{/* Vite */}
@@ -475,9 +375,7 @@ export default function RootLayout({ children }) {
 									}}>
 									main.tsx — Vite / CRA
 								</p>
-								<CodeBlock
-									language='tsx'
-									code={`import '@kivora/react/styles.css';
+								<Code block showLineNumbers copyable language='tsx'>{`import '@kivora/react/styles.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -486,8 +384,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-);`}
-								/>
+);`}</Code>
 							</div>
 
 							<div
@@ -568,9 +465,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 								. No hay provider ni wrapper necesario.
 							</p>
 
-							<CodeBlock
-								language='tsx'
-								code={`import { Button, TextInput, Stack } from '@kivora/react';
+							<Code block showLineNumbers copyable language='tsx'>{`import { Button, TextInput, Stack } from '@kivora/react';
 
 export default function LoginForm() {
   return (
@@ -590,8 +485,7 @@ export default function LoginForm() {
       </Button>
     </Stack>
   );
-}`}
-							/>
+}`}</Code>
 
 							{/* Live preview */}
 							<div
@@ -732,16 +626,13 @@ export default function LoginForm() {
 								tipos.
 							</p>
 
-							<CodeBlock
-								language='tsx'
-								code={`import { Button } from '@kivora/react';
+							<Code block showLineNumbers copyable language='tsx'>{`import { Button } from '@kivora/react';
 // ButtonProps está disponible implicitamente
 import type { ButtonProps } from '@kivora/react';
 
 function MyButton(props: ButtonProps) {
   return <Button variant="outline" {...props} />;
-}`}
-							/>
+}`}</Code>
 
 							<div
 								style={{
@@ -800,16 +691,13 @@ function MyButton(props: ButtonProps) {
 								color:
 							</p>
 
-							<CodeBlock
-								language='css'
-								code={`/* globals.css */
+							<Code block showLineNumbers copyable language='css'>{`/* globals.css */
 :root {
   --kv-color-brand-hue: 217;       /* tono HSL del color de acento */
   --kv-color-brand-saturation: 91%;
   --kv-radius-default: 0.5rem;     /* radio de borde global */
   --kv-font-sans: 'Inter', sans-serif;
-}`}
-							/>
+}`}</Code>
 
 							<p
 								style={{

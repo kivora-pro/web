@@ -1,6 +1,7 @@
-'use client';
+﻿'use client';
 
 import Navbar from '@/src/components/Navbar';
+import { Code } from '@kivora/react';
 import { useState } from 'react';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -962,27 +963,25 @@ export default function HooksPage() {
 													<p className='text-[10px] font-semibold uppercase tracking-widest text-zinc-600 mb-2'>
 														Signature
 													</p>
-													<pre
-														className='text-xs text-cyan-300 rounded-lg p-3 overflow-x-auto font-mono border border-white/6'
-														style={{
-															background:
-																'rgba(6,182,212,0.05)',
-														}}>
+													<Code
+														block
+														showLineNumbers
+														copyable
+														language='typescript'>
 														{hook.signature}
-													</pre>
+													</Code>
 												</div>
 												<div>
 													<p className='text-[10px] font-semibold uppercase tracking-widest text-zinc-600 mb-2'>
 														Example
 													</p>
-													<pre
-														className='text-xs text-zinc-300 rounded-lg p-3 overflow-x-auto font-mono border border-white/6'
-														style={{
-															background:
-																'rgba(255,255,255,0.03)',
-														}}>
+													<Code
+														block
+														showLineNumbers
+														copyable
+														language='typescript'>
 														{hook.example}
-													</pre>
+													</Code>
 												</div>
 											</div>
 										)}

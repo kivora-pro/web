@@ -1,6 +1,7 @@
-'use client';
+﻿'use client';
 
 import Navbar from '@/src/components/Navbar';
+import { Code } from '@kivora/react';
 import { useState } from 'react';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -262,70 +263,6 @@ function Swatch({ color }: { color: string }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Code block
-// ─────────────────────────────────────────────────────────────────────────────
-function CodeBlock({ code, label }: { code: string; label?: string }) {
-	const [copied, setCopied] = useState(false);
-	return (
-		<div
-			className='relative rounded-xl border border-white/8 overflow-hidden'
-			style={{ background: 'rgba(255,255,255,0.025)' }}>
-			{label && (
-				<div className='flex items-center justify-between px-4 py-2 border-b border-white/6'>
-					<span className='text-[10px] font-semibold uppercase tracking-widest text-zinc-600'>
-						{label}
-					</span>
-					<button
-						onClick={() => {
-							navigator.clipboard.writeText(code);
-							setCopied(true);
-							setTimeout(() => setCopied(false), 2000);
-						}}
-						className='flex items-center gap-1.5 text-[10px] text-zinc-500 hover:text-zinc-300 transition-colors'>
-						{copied ? (
-							<>
-								<svg
-									className='w-3 h-3'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2.5'>
-									<path
-										strokeLinecap='round'
-										strokeLinejoin='round'
-										d='M4.5 12.75l6 6 9-13.5'
-									/>
-								</svg>
-								Copied
-							</>
-						) : (
-							<>
-								<svg
-									className='w-3 h-3'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2'>
-									<path
-										strokeLinecap='round'
-										strokeLinejoin='round'
-										d='M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184'
-									/>
-								</svg>
-								Copy
-							</>
-						)}
-					</button>
-				</div>
-			)}
-			<pre className='text-xs text-zinc-300 font-mono px-4 py-3 overflow-x-auto leading-relaxed'>
-				{code}
-			</pre>
-		</div>
-	);
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 // Page
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -420,10 +357,13 @@ export default function ThemingPage() {
 								entry file. All CSS variables and component
 								styles are included.
 							</p>
-							<CodeBlock
-								code={IMPORT_CODE}
-								label='Root layout / entry file'
-							/>
+							<Code
+								block
+								showLineNumbers
+								copyable
+								language='typescript'>
+								{IMPORT_CODE}
+							</Code>
 						</section>
 
 						{/* Token table */}
@@ -517,10 +457,13 @@ export default function ThemingPage() {
 								configuration required for automatic OS-level
 								dark mode.
 							</p>
-							<CodeBlock
-								code={DARK_MODE_CODE}
-								label='index.html / layout.tsx'
-							/>
+							<Code
+								block
+								showLineNumbers
+								copyable
+								language='html'>
+								{DARK_MODE_CODE}
+							</Code>
 							{/* Visual demo */}
 							<div className='grid grid-cols-2 gap-4 mt-6'>
 								{(['light', 'dark'] as const).map((m) => (
@@ -587,10 +530,13 @@ export default function ThemingPage() {
 								component styles will automatically pick up your
 								values.
 							</p>
-							<CodeBlock
-								code={OVERRIDE_CODE}
-								label='globals.css'
-							/>
+							<Code
+								block
+								showLineNumbers
+								copyable
+								language='css'>
+								{OVERRIDE_CODE}
+							</Code>
 						</section>
 
 						{/* Tailwind */}
@@ -611,10 +557,13 @@ export default function ThemingPage() {
 								</code>
 								.
 							</p>
-							<CodeBlock
-								code={TAILWIND_CODE}
-								label='tailwind.config.ts'
-							/>
+							<Code
+								block
+								showLineNumbers
+								copyable
+								language='typescript'>
+								{TAILWIND_CODE}
+							</Code>
 						</section>
 					</div>
 				</main>

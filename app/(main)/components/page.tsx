@@ -10913,8 +10913,7 @@ export default function ComponentsPage() {
 											)}
 											{control.type === 'number' && (
 												<div className='flex items-center gap-3 flex-1'>
-													<input
-														type='range'
+													<Slider
 														min={control.min ?? 0}
 														max={control.max ?? 100}
 														step={control.step ?? 1}
@@ -10924,16 +10923,15 @@ export default function ComponentsPage() {
 															] as number) ??
 															control.default
 														}
-														onChange={(e) =>
+														onChange={(val: number) =>
 															setControl(
 																control.name,
-																Number(
-																	e.target
-																		.value,
-																),
+																val,
 															)
 														}
-														className='flex-1 accent-violet-600 h-1 cursor-pointer'
+														className='flex-1'
+														color='violet'
+														size='xs'
 													/>
 													<span className='text-xs font-mono text-zinc-400 w-8 text-right'>
 														{(controlValues[
@@ -10981,25 +10979,13 @@ export default function ComponentsPage() {
 							<h2 className='text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-3'>
 								Usage
 							</h2>
-							<div className='rounded-xl border border-white/8 overflow-hidden'>
-								<div
-									className='flex items-center justify-between px-4 py-2.5 border-b border-white/6'
-									style={{
-										background: 'rgba(255,255,255,0.025)',
-									}}>
-									<div className='flex items-center gap-1.5'>
-										<span className='w-2.5 h-2.5 rounded-full bg-red-500/70' />
-										<span className='w-2.5 h-2.5 rounded-full bg-amber-500/70' />
-										<span className='w-2.5 h-2.5 rounded-full bg-emerald-500/70' />
-									</div>
-									<span className='text-[10px] font-medium text-zinc-600 uppercase tracking-widest'>
-										TSX
-									</span>
-								</div>
-								<pre className='px-5 py-4 text-xs font-mono text-cyan-300/80 overflow-x-auto leading-relaxed'>
-									<code>{getUsageCode(selected.id)}</code>
-								</pre>
-							</div>
+							<Code
+								block
+								showLineNumbers
+								copyable
+								language='tsx'>
+								{getUsageCode(selected.id)}
+							</Code>
 						</div>
 
 						{/* API */}
