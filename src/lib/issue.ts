@@ -1,5 +1,6 @@
-const REPO = 'https://github.com/kivora-pro/module';
-const KIVORA_VERSION = '0.1.0';
+import { GITHUB_REPO, KIVORA_VERSION } from './constants';
+
+const REPO = GITHUB_REPO;
 
 /**
  * Generates a GitHub new-issue URL with pre-filled title and body.
@@ -10,12 +11,14 @@ const KIVORA_VERSION = '0.1.0';
 export function buildIssueUrl(
 	section: string,
 	component?: string | null,
+	type: 'bug' | 'feature' = 'bug',
 ): string {
+	const prefix = type === 'bug' ? '🐞 ' : '✨ ';
 	const titleTag = component
-		? `[${section}][${component}]: `
-		: `[${section}]: `;
+		? `${prefix}[${section}][${component}]: `
+		: `${prefix}[${section}]: `;
 
-	const body = [
+	const bugBody = [
 		`> **Package:** \`@kivora/react@${KIVORA_VERSION}\``,
 		'',
 		'## 📌 Summary',
@@ -58,6 +61,29 @@ export function buildIssueUrl(
 		'<!-- Screenshots, stack traces, related PRs or issues -->',
 	].join('\n');
 
+	const featureBody = [
+		`> **Package:** \`@kivora/react@${KIVORA_VERSION}\``,
+		'',
+		'## ✨ Feature Description',
+		'A clear and concise description of the feature or improvement.',
+		'',
+		'---',
+		'',
+		'## 🎯 Problem it Solves',
+		"Describe the problem or limitation you're trying to address.",
+		'',
+		'---',
+		'',
+		'## 💡 Proposed Solution',
+		'Describe how you would like this to work.',
+		'',
+		'---',
+		'',
+		'## 📎 Additional Context',
+		'<!-- Examples, mockups, related issues or references -->',
+	].join('\n');
+
+	const body = type === 'bug' ? bugBody : featureBody;
 	const params = new URLSearchParams({ title: titleTag, body });
 	return `${REPO}/issues/new?${params}`;
 }

@@ -1,73 +1,97 @@
-'use client';
-
-import { useLocale } from '@/app/(main)/i18n';
+import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { DocsNavLinks } from './DocsNavLinks';
 
-const NAV_LINKS = [
-	{ href: '/docs', label: 'Docs' },
-	{ href: '/components', label: 'Components' },
-	{ href: '/hooks', label: 'Hooks' },
-	{ href: '/theming', label: 'Theming' },
-	{ href: '/extensions', label: 'Extensions' },
-	{ href: '/roadmap', label: 'Roadmap' },
-];
+export async function Navbar() {
+	const t = await getTranslations('navbar');
 
-export default function Navbar() {
-	const pathname = usePathname();
-	const { locale, setLocale } = useLocale();
+	const DOC_LINKS = [
+		{ label: t('components'), href: '/docs/components' },
+		{ label: t('hooks'), href: '/docs/hooks' },
+		{ label: t('extensions'), href: '/docs/extensions' },
+	];
+
+	const OTHER_LINKS = [
+		{ label: t('showcase'), href: '/showcase' },
+		{ label: t('roadmap'), href: '/roadmap' },
+	];
 
 	return (
-		<header
-			className='fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 md:px-10 h-14 border-b border-white/6'
-			style={{
-				background: 'rgba(9,9,11,0.85)',
-				backdropFilter: 'blur(12px)',
-			}}>
-			<Link
-				href='/'
-				className='flex items-center gap-2.5'>
-				<div
-					className='w-6 h-6 rounded-md flex items-center justify-center'
-					style={{
-						background: 'linear-gradient(135deg, #7c3aed, #06b6d4)',
-					}}>
-					<span className='text-white text-[10px] font-bold'>K</span>
-				</div>
-				<span className='font-semibold text-white text-sm tracking-tight'>
-					kivora ui
-				</span>
-			</Link>
-			<nav className='hidden md:flex items-center gap-5 text-sm text-zinc-500'>
-				{NAV_LINKS.map((l) => (
+		<header className='fixed top-4 left-0 right-0 z-50 flex justify-center px-4'>
+			<nav className='flex items-center gap-1 rounded-full border border-white/10 bg-[#07070f]/70 px-2 py-2 shadow-lg shadow-black/30 backdrop-blur-xl'>
+				{/* Logo */}
+				<Link
+					href='/'
+					className='flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold text-white outline-none transition-colors hover:bg-white/8'>
+					<Image
+						src='/logo.png'
+						alt='Kivora UI'
+						width={20}
+						height={20}
+						className='rounded-md'
+						priority
+					/>
+					<span className='hidden sm:inline'>Kivora UI</span>
+				</Link>
+
+				{/* Divider */}
+				<div className='mx-1 h-4 w-px bg-white/10' />
+
+				{/* Docs section links (with active state) */}
+				<DocsNavLinks links={DOC_LINKS} />
+
+				{/* Divider */}
+				<div className='mx-1 h-4 w-px bg-white/10' />
+
+				{/* Other links */}
+				{OTHER_LINKS.map((link) => (
 					<Link
-						key={l.href}
-						href={l.href}
-						className={
-							pathname === l.href
-								? 'text-zinc-200 font-medium transition-colors'
-								: 'hover:text-zinc-300 transition-colors'
-						}>
-						{l.label}
+						key={link.href}
+						href={link.href}
+						className='rounded-full px-3.5 py-1.5 text-xs font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white'>
+						{link.label}
 					</Link>
 				))}
-				<div className='flex items-center gap-2 ml-2'>
-					<button
-						onClick={() => setLocale(locale === 'en' ? 'es' : 'en')}
-						className='px-3 py-1 rounded-md text-xs font-mono border border-white/10 text-zinc-400 hover:text-zinc-200 hover:border-white/25 transition-all'
-						style={{ background: 'rgba(255,255,255,0.04)' }}>
-						{locale === 'en' ? 'ES' : 'EN'}
-					</button>
-					<Link
-						href='/getting-started'
-						className='px-4 py-1.5 rounded-lg text-xs text-white font-medium transition-all hover:scale-105'
-						style={{
-							background:
-								'linear-gradient(135deg, #7c3aed, #06b6d4)',
-						}}>
-						Get started
-					</Link>
-				</div>
+
+				{/* Divider */}
+				<div className='mx-1 h-4 w-px bg-white/10' />
+
+				{/* GitHub */}
+				<a
+					href='https://github.com'
+					target='_blank'
+					rel='noopener noreferrer'
+					aria-label='GitHub'
+					className='flex h-8 w-8 items-center justify-center rounded-full text-zinc-500 transition-colors hover:bg-white/8 hover:text-white'>
+					<svg
+						viewBox='0 0 24 24'
+						className='h-4 w-4'
+						fill='currentColor'>
+						<path d='M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z' />
+					</svg>
+				</a>
+
+				{/* npm badge */}
+				<a
+					href='https://www.npmjs.com/package/@kivora/react'
+					target='_blank'
+					rel='noopener noreferrer'
+					className='hidden items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:border-white/20 hover:text-white sm:flex'>
+					<span className='h-1.5 w-1.5 rounded-full bg-green-400' />
+					npm
+				</a>
+
+				{/* CTA */}
+				<Link
+					href='/docs/getting-started'
+					className='rounded-full px-4 py-1.5 text-xs font-semibold text-white transition-opacity hover:opacity-80'
+					style={{
+						background:
+							'linear-gradient(135deg,#7c3aed 0%,#6366f1 100%)',
+					}}>
+					{t('getStarted')}
+				</Link>
 			</nav>
 		</header>
 	);
