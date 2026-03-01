@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 
+/* ── Sugo Pro Display ── */
+@font-face {
+	font-family: 'SugoPro';
+	src: url('/fonts/Sugo-Pro-Display-Bold-trial.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* ── Override Kivora design tokens: dark page + violet brand ── */
 :root {
 	--background: #07070f;
@@ -79,4 +88,155 @@ body {
 .scrollbar-thin {
 	scrollbar-width: thin;
 	scrollbar-color: rgba(124, 58, 237, 0.25) transparent;
+}
+
+/* ── Background focal animations ── */
+@keyframes focal-drift-1 {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+		opacity: 1;
+	}
+	33% {
+		transform: translate(40px, 30px) scale(1.06);
+		opacity: 0.75;
+	}
+	66% {
+		transform: translate(-20px, 50px) scale(0.95);
+		opacity: 0.9;
+	}
+}
+@keyframes focal-drift-2 {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+		opacity: 1;
+	}
+	40% {
+		transform: translate(-50px, -30px) scale(1.08);
+		opacity: 0.7;
+	}
+	75% {
+		transform: translate(20px, -50px) scale(0.97);
+		opacity: 0.85;
+	}
+}
+@keyframes focal-drift-3 {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+		opacity: 0.9;
+	}
+	50% {
+		transform: translate(-30px, 40px) scale(1.05);
+		opacity: 0.6;
+	}
+}
+@keyframes focal-drift-4 {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+		opacity: 0.8;
+	}
+	45% {
+		transform: translate(35px, -25px) scale(1.07);
+		opacity: 0.55;
+	}
+	80% {
+		transform: translate(-15px, 30px) scale(0.96);
+		opacity: 0.75;
+	}
+}
+
+.focal {
+	filter: blur(72px);
+	will-change: transform, opacity;
+}
+
+/* ── Floating card animations (SlidePresentation showcase) ── */
+@keyframes float-y-a {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-16px);
+	}
+}
+@keyframes float-y-b {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-11px);
+	}
+}
+@keyframes float-y-c {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-14px);
+	}
+}
+
+/* ── Floating component card animations (SlidePresentation) ── */
+@keyframes float-a {
+	0%,
+	100% {
+		transform: translateY(0) rotate(-6deg);
+	}
+	50% {
+		transform: translateY(-16px) rotate(-6deg);
+	}
+}
+@keyframes float-b {
+	0%,
+	100% {
+		transform: translateY(0) rotate(5deg);
+	}
+	50% {
+		transform: translateY(-12px) rotate(5deg);
+	}
+}
+@keyframes float-c {
+	0%,
+	100% {
+		transform: translateY(-50%) rotate(3deg);
+	}
+	50% {
+		transform: translateY(calc(-50% - 14px)) rotate(3deg);
+	}
+}
+@keyframes float-d {
+	0%,
+	100% {
+		transform: translateY(0) rotate(-4deg);
+	}
+	50% {
+		transform: translateY(-18px) rotate(-4deg);
+	}
+}
+@keyframes float-e {
+	0%,
+	100% {
+		transform: translateY(0) rotate(4deg);
+	}
+	50% {
+		transform: translateY(-10px) rotate(4deg);
+	}
+}
+.focal-1 {
+	animation: focal-drift-1 18s ease-in-out infinite;
+}
+.focal-2 {
+	animation: focal-drift-2 22s ease-in-out infinite;
+}
+.focal-3 {
+	animation: focal-drift-3 15s ease-in-out infinite;
+}
+.focal-4 {
+	animation: focal-drift-4 20s ease-in-out infinite;
 }
