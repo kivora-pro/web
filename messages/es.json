@@ -1,0 +1,87 @@
+{
+	"hero": {
+		"title": "Componentes modernos",
+		"subtitle": "Diseñados para rendimiento y escalabilidad"
+	},
+	"navbar": {
+		"components": "Componentes",
+		"hooks": "Hooks",
+		"extensions": "Extensiones",
+		"getStarted": "Empezar",
+		"showcase": "Ejemplos",
+		"roadmap": "Roadmap"
+	},
+	"presentation": {
+		"badge": "Open source · MIT",
+		"tagline": "Una librería.",
+		"taglineHighlight": "Todos los frameworks.",
+		"description": "Componentes UI con API idéntica para React, React Native, Solid, Svelte y Vite. Sin compromiso, sin duplicaciones.",
+		"scrollHint": "Desplaza para explorar"
+	},
+	"usability": {
+		"label": "Usabilidad",
+		"title": "Diseñado para ser simple",
+		"description": "Componentes listos para producción con la menor fricción posible. Instala, importa y construye.",
+		"f1Title": "API unificada",
+		"f1Desc": "Mismos props y comportamiento en todos los frameworks.",
+		"f2Title": "Accesibilidad",
+		"f2Desc": "WAI-ARIA completo, navegación por teclado incluida.",
+		"f3Title": "Tokens de diseño",
+		"f3Desc": "Sistema de spacing, colores y tipografía coherente.",
+		"f4Title": "+60 componentes",
+		"f4Desc": "Botones, inputs, modales, tablas, overlays y más."
+	},
+	"frameworks": {
+		"label": "Multi-framework",
+		"title": "Un código.",
+		"titleHighlight": "Cinco plataformas.",
+		"description": "Mismos componentes, misma API, mismos props. Solo cambia el import.",
+		"available": "Disponible",
+		"comingSoon": "Próximamente",
+		"inDevelopment": "En desarrollo",
+		"statComponents": "Componentes",
+		"statHooks": "Hooks",
+		"statTs": "TypeScript"
+	},
+	"stepByStep": {
+		"label": "Paso a paso",
+		"title": "De cero a producción",
+		"description": "En menos de 5 minutos tienes tu primera UI funcionando.",
+		"s1Title": "Instala el paquete",
+		"s1Desc": "Una sola dependencia, sin peer deps complicados.",
+		"s2Title": "Importa los estilos",
+		"s2Desc": "Una línea en el entry point de tu app, una sola vez.",
+		"s3Title": "Envuelve tu app",
+		"s3Desc": "KivoraProvider habilita modales imperativos y contextos globales.",
+		"s4Title": "Empieza a construir",
+		"s4Desc": "Importa cualquier componente y úsalo directamente.",
+		"viewNpm": "Ver en npm",
+		"viewDocs": "Ver documentación"
+	},
+	"docs": {
+		"preview": "Vista previa",
+		"code": "Código",
+		"controls": "Controles",
+		"props": "Atributos",
+		"copy": "Copiar",
+		"copied": "Copiado",
+		"issueTitle": "¿Encontraste un problema?",
+		"issueDesc": "Si encuentras un bug o quieres sugerir una mejora, abre un issue en GitHub.",
+		"issueLink": "Abrir issue en GitHub",
+		"issueHeading": "¿Algo no funciona como esperabas?",
+		"issueBody": "Si encuentras un bug o quieres sugerir una mejora para <highlight>{target}</highlight>, abre un issue. Lo revisamos habitualmente.",
+		"issueDefaultTarget": "esta sección",
+		"issueBugBtn": "Reportar bug",
+		"issueFeatureBtn": "Sugerir mejora",
+		"issueGithub": "GitHub",
+		"statusStable": "Estable",
+		"statusBeta": "Beta",
+		"statusAlpha": "Alpha",
+		"statusWip": "En desarrollo",
+		"statusDeprecated": "Deprecado",
+		"search": "Buscar...",
+		"backToHome": "← Inicio",
+		"interactivePreview": "Vista previa interactiva",
+		"comingSoon": "Próximamente"
+	}
+}

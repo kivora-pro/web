@@ -1,0 +1,87 @@
+{
+	"hero": {
+		"title": "Modern components",
+		"subtitle": "Built for performance and scalability"
+	},
+	"navbar": {
+		"components": "Components",
+		"hooks": "Hooks",
+		"extensions": "Extensions",
+		"getStarted": "Get Started",
+		"showcase": "Showcase",
+		"roadmap": "Roadmap"
+	},
+	"presentation": {
+		"badge": "Open source · MIT",
+		"tagline": "One library.",
+		"taglineHighlight": "Every framework.",
+		"description": "UI components with identical API for React, React Native, Solid, Svelte and Vite. No compromise, no duplication.",
+		"scrollHint": "Scroll to explore"
+	},
+	"usability": {
+		"label": "Usability",
+		"title": "Designed to be simple",
+		"description": "Production-ready components with minimum friction. Install, import and build.",
+		"f1Title": "Unified API",
+		"f1Desc": "Same props and behavior across all frameworks.",
+		"f2Title": "Accessibility",
+		"f2Desc": "Full WAI-ARIA, keyboard navigation included.",
+		"f3Title": "Design tokens",
+		"f3Desc": "Consistent spacing, color and typography system.",
+		"f4Title": "+60 components",
+		"f4Desc": "Buttons, inputs, modals, tables, overlays and more."
+	},
+	"frameworks": {
+		"label": "Multi-framework",
+		"title": "One code.",
+		"titleHighlight": "Five platforms.",
+		"description": "Same components, same API, same props. Only the import changes.",
+		"available": "Available",
+		"comingSoon": "Coming soon",
+		"inDevelopment": "In development",
+		"statComponents": "Components",
+		"statHooks": "Hooks",
+		"statTs": "TypeScript"
+	},
+	"stepByStep": {
+		"label": "Step by step",
+		"title": "From zero to production",
+		"description": "In less than 5 minutes you have your first working UI.",
+		"s1Title": "Install the package",
+		"s1Desc": "One dependency, no complex peer deps.",
+		"s2Title": "Import styles",
+		"s2Desc": "One line in your app entry point, just once.",
+		"s3Title": "Wrap your app",
+		"s3Desc": "KivoraProvider enables imperative modals and global contexts.",
+		"s4Title": "Start building",
+		"s4Desc": "Import any component and use it directly.",
+		"viewNpm": "View on npm",
+		"viewDocs": "View documentation"
+	},
+	"docs": {
+		"preview": "Preview",
+		"code": "Code",
+		"controls": "Controls",
+		"props": "Props",
+		"copy": "Copy",
+		"copied": "Copied",
+		"issueTitle": "Found a problem?",
+		"issueDesc": "If you find a bug or want to suggest an improvement, open an issue on GitHub.",
+		"issueLink": "Open GitHub issue",
+		"issueHeading": "Something not working as expected?",
+		"issueBody": "If you find a bug or want to suggest an improvement for <highlight>{target}</highlight>, open an issue. We review them regularly.",
+		"issueDefaultTarget": "this section",
+		"issueBugBtn": "Report bug",
+		"issueFeatureBtn": "Suggest improvement",
+		"issueGithub": "GitHub",
+		"statusStable": "Stable",
+		"statusBeta": "Beta",
+		"statusAlpha": "Alpha",
+		"statusWip": "Work in progress",
+		"statusDeprecated": "Deprecated",
+		"search": "Search...",
+		"backToHome": "← Home",
+		"interactivePreview": "Interactive preview",
+		"comingSoon": "Coming soon"
+	}
+}
