@@ -1,316 +1,273 @@
-'use client';
+import type { Metadata } from 'next';
 
-import Navbar from '@/src/components/Navbar';
-
-type PhaseStatus = 'done' | 'in-progress' | 'planned';
-
-const PHASE_CLASS: Record<PhaseStatus, string> = {
-	done: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/25',
-	'in-progress': 'bg-violet-500/10 text-violet-400 border-violet-500/25',
-	planned: 'bg-zinc-500/10 text-zinc-500 border-zinc-600/30',
+export const metadata: Metadata = {
+	title: 'Roadmap — Kivora UI',
+	description:
+		'Hoja de ruta pública de Kivora UI. Mira qué hay en desarrollo, qué está planificado y qué ya se entregó.',
 };
-const PHASE_LABEL: Record<PhaseStatus, string> = {
-	done: 'Done',
-	'in-progress': 'In progress',
-	planned: 'Planned',
-};
+
+type Status = 'done' | 'in-progress' | 'planned' | 'idea';
 
 interface RoadmapItem {
-	title: string;
-	description: string;
-	status: PhaseStatus;
+	label: string;
+	status?: Status;
 }
 
-const PHASES: { phase: string; period: string; items: RoadmapItem[] }[] = [
+interface Quarter {
+	quarter: string;
+	title: string;
+	description: string;
+	status: Status;
+	items: RoadmapItem[];
+}
+
+const ROADMAP: Quarter[] = [
 	{
-		phase: 'v1.0 — Foundation',
-		period: 'Current',
+		quarter: 'Q1 2026',
+		title: 'Núcleo estable',
+		description:
+			'Componentes de UI fundamentales, sistema de diseño y hooks principales listos para producción.',
+		status: 'done',
 		items: [
-			{
-				title: '@kivora/react',
-				description:
-					'Full component suite for React 18 & 19 with accessible primitives.',
-				status: 'done',
-			},
-			{
-				title: 'Design tokens',
-				description:
-					'CSS custom-property theme system with dark-mode support out of the box.',
-				status: 'done',
-			},
-			{
-				title: 'Core hooks',
-				description:
-					'useClipboard, useTheme, useMediaQuery and more utility hooks.',
-				status: 'done',
-			},
-			{
-				title: 'Toaster system',
-				description:
-					'toast() API with loading, success, error and promise helpers.',
-				status: 'done',
-			},
-			{
-				title: 'Docs site',
-				description:
-					'Documentation portal with live previews and API tables.',
-				status: 'in-progress',
-			},
-			{
-				title: 'Component storybook',
-				description:
-					'Interactive playground for every component variant.',
-				status: 'in-progress',
-			},
+			{ label: 'Button, ActionIcon, IconButton' },
+			{ label: 'Input, Textarea, Select, Checkbox, Radio, Switch' },
+			{ label: 'Modal, Drawer, Popover, Tooltip' },
+			{ label: 'Badge, Avatar, Skeleton, Spinner' },
+			{ label: 'Tabs, Breadcrumb, Pagination, Stepper' },
+			{ label: 'Table, Accordion' },
+			{ label: 'Text, Title, Code' },
+			{ label: '65+ hooks (estado, DOM, browser, timers…)' },
+			{ label: 'Spotlight / command palette' },
+			{ label: 'Modals imperativos' },
+			{ label: 'Dropzone' },
+			{ label: 'Carousel' },
+			{ label: 'Suite de fechas (DatePicker, RangePicker, TimePicker)' },
 		],
 	},
 	{
-		phase: 'v1.1 — Ecosystem',
-		period: 'Q3 2026',
+		quarter: 'Q2 2026',
+		title: 'Ecosistema & DX',
+		description:
+			'Mejoras en la experiencia de desarrollo, nuevas extensiones y soporte ampliado de frameworks.',
+		status: 'in-progress',
 		items: [
-			{
-				title: '@kivora/react-native',
-				description:
-					'Port of the full component suite to React Native with native primitives.',
-				status: 'in-progress',
-			},
-			{
-				title: '@kivora/solid',
-				description:
-					'SolidJS adapter sharing the same design tokens and API surface.',
-				status: 'in-progress',
-			},
-			{
-				title: '@kivora/svelte',
-				description:
-					'Svelte 4 & 5 component library with runes support.',
-				status: 'in-progress',
-			},
-			{
-				title: '@kivora/vite-plugin',
-				description:
-					'Vite plugin for automatic CSS injection and tree-shaking.',
-				status: 'in-progress',
-			},
-			{
-				title: 'CLI scaffold',
-				description:
-					'`create-kivora-app` to bootstrap a new project in seconds.',
-				status: 'planned',
-			},
+			{ label: 'Notifications / toast system', status: 'in-progress' },
+			{ label: 'ContextMenu y RightClickMenu', status: 'in-progress' },
+			{ label: 'Tour / onboarding steps', status: 'planned' },
+			{ label: 'Charts (wrapper Recharts)', status: 'planned' },
+			{ label: 'CLI — kivora add <component>', status: 'planned' },
+			{ label: 'VS Code snippets extension', status: 'planned' },
+			{ label: 'Figma kit (Community)', status: 'planned' },
 		],
 	},
 	{
-		phase: 'v1.2 — Advanced',
-		period: 'Q4 2026',
+		quarter: 'Q3 2026',
+		title: 'Multi-framework',
+		description:
+			'Llevar la misma API de componentes a Solid, Svelte y Vue manteniendo los tokens de diseño compartidos.',
+		status: 'planned',
 		items: [
-			{
-				title: 'Advanced Data Table',
-				description:
-					'Virtualized table with sorting, filtering, column resizing and row selection.',
-				status: 'planned',
-			},
-			{
-				title: 'Date Picker',
-				description:
-					'Fully accessible date and date-range picker with i18n support.',
-				status: 'planned',
-			},
-			{
-				title: 'Rich Text Editor',
-				description:
-					'Prose editor built on ProseMirror with a clean toolbar API.',
-				status: 'planned',
-			},
-			{
-				title: 'Motion system',
-				description:
-					'First-class animation tokens integrating with Framer Motion / Motion One.',
-				status: 'planned',
-			},
-			{
-				title: 'Figma Kit',
-				description:
-					'Component library for Figma that stays in sync with the code.',
-				status: 'planned',
-			},
+			{ label: 'Solid.js port', status: 'planned' },
+			{ label: 'Svelte 5 port', status: 'planned' },
+			{ label: 'Vue 3 port', status: 'planned' },
+			{ label: 'Design tokens paquete independiente', status: 'planned' },
+			{ label: 'Tailwind v4 preset público', status: 'planned' },
+		],
+	},
+	{
+		quarter: 'Q4 2026',
+		title: 'React Native',
+		description:
+			'Componentes nativos iOS/Android con la misma API que la versión web, integración con Expo.',
+		status: 'planned',
+		items: [
+			{ label: 'Core components nativos', status: 'planned' },
+			{ label: 'Expo SDK 52 compatible', status: 'planned' },
+			{ label: 'Navigation primitives', status: 'planned' },
+			{ label: 'Haptics & animations (Reanimated 3)', status: 'planned' },
+			{ label: 'Storybook Native integration', status: 'planned' },
+		],
+	},
+	{
+		quarter: '2027+',
+		title: 'Ideas & Backlog',
+		description:
+			'Funcionalidades en evaluación según prioridad y feedback de la comunidad.',
+		status: 'idea',
+		items: [
+			{ label: 'AI-generated component variants', status: 'idea' },
+			{ label: 'E2E testing helpers', status: 'idea' },
+			{ label: 'Server Components primitives', status: 'idea' },
+			{ label: 'Web Components build target', status: 'idea' },
 		],
 	},
 ];
 
-export default function RoadmapPage() {
-	return (
-		<div className='min-h-screen bg-[#09090b] text-zinc-100'>
-			<Navbar />
+const STATUS_CONFIG: Record<
+	Status,
+	{ label: string; dot: string; badge: string; card: string; pill: string }
+> = {
+	done: {
+		label: 'Completado',
+		dot: 'bg-emerald-400',
+		badge: 'border-emerald-500/30 text-emerald-400',
+		card: 'border-emerald-500/15 bg-emerald-500/5',
+		pill: 'bg-emerald-400/10 text-emerald-400',
+	},
+	'in-progress': {
+		label: 'En progreso',
+		dot: 'bg-brand animate-pulse',
+		badge: 'border-brand/40 text-brand',
+		card: 'border-brand/15 bg-brand/5',
+		pill: 'bg-brand/10 text-brand',
+	},
+	planned: {
+		label: 'Planificado',
+		dot: 'bg-zinc-500',
+		badge: 'border-white/10 text-zinc-400',
+		card: 'border-white/8 bg-white/2',
+		pill: 'bg-white/5 text-zinc-500',
+	},
+	idea: {
+		label: 'Idea',
+		dot: 'bg-zinc-700',
+		badge: 'border-white/6 text-zinc-600',
+		card: 'border-white/5 bg-white/1',
+		pill: 'bg-white/3 text-zinc-600',
+	},
+};
 
-			{/* Content */}
-			<main className='pt-28 pb-24 px-6 max-w-4xl mx-auto'>
-				{/* Hero */}
-				<div className='mb-16'>
-					<div
-						className='inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-6 border border-white/10 text-zinc-400'
-						style={{ background: 'rgba(255,255,255,0.04)' }}>
-						Roadmap
-					</div>
-					<h1 className='text-4xl md:text-5xl font-bold text-white mb-4 leading-tight'>
-						What we&apos;re building
-						<br />
-						<span
-							className='bg-clip-text text-transparent'
-							style={{
-								backgroundImage:
-									'linear-gradient(135deg, #7c3aed, #06b6d4)',
-							}}>
-							next
+function ItemDot({ status }: { status: Status }) {
+	const cfg = STATUS_CONFIG[status];
+	return (
+		<span
+			className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${cfg.dot}`}
+		/>
+	);
+}
+
+export default function RoadmapPage() {
+	const done = ROADMAP.filter((q) => q.status === 'done').length;
+	const total = ROADMAP.filter((q) => q.status !== 'idea').length;
+
+	return (
+		<div className='min-h-screen bg-[#07070f]'>
+			{/* Hero */}
+			<div className='mx-auto max-w-3xl px-6 pb-16 pt-32'>
+				<p className='mb-3 text-xs font-semibold uppercase tracking-widest text-zinc-500'>
+					Hoja de ruta pública
+				</p>
+				<h1 className='mb-5 text-4xl font-bold tracking-tight text-white'>
+					Roadmap
+				</h1>
+				<p className='max-w-xl text-base leading-relaxed text-zinc-400'>
+					Planificación abierta de Kivora UI. Sujeta a cambios según
+					prioridades y feedback de la comunidad. ¿Tienes una
+					sugerencia?{' '}
+					<a
+						href='https://github.com/kivora-pro/module/issues'
+						target='_blank'
+						rel='noopener noreferrer'
+						className='text-white underline underline-offset-2 hover:text-zinc-200'>
+						Abre un issue
+					</a>
+					.
+				</p>
+
+				{/* Progress bar */}
+				<div className='mt-8'>
+					<div className='mb-2 flex items-center justify-between text-xs text-zinc-500'>
+						<span>
+							{done} de {total} fases completadas
 						</span>
-					</h1>
-					<p className='text-zinc-400 text-lg max-w-2xl'>
-						A living document of what&apos;s shipped, what&apos;s in
-						progress and what&apos;s coming. Have an idea? Open an
-						issue on GitHub.
-					</p>
+						<span>{Math.round((done / total) * 100)}%</span>
+					</div>
+					<div className='h-1.5 w-full overflow-hidden rounded-full bg-white/6'>
+						<div
+							className='h-full rounded-full bg-linear-to-r from-emerald-500 to-emerald-400 transition-all'
+							style={{ width: `${(done / total) * 100}%` }}
+						/>
+					</div>
 				</div>
 
 				{/* Legend */}
-				<div className='flex items-center gap-3 mb-14 flex-wrap'>
-					{(Object.keys(PHASE_LABEL) as PhaseStatus[]).map((s) => (
-						<span
-							key={s}
-							className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold border ${PHASE_CLASS[s]}`}>
-							{s === 'done' && (
-								<span className='w-1.5 h-1.5 rounded-full bg-emerald-400' />
-							)}
-							{s === 'in-progress' && (
-								<span className='w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse' />
-							)}
-							{s === 'planned' && (
-								<span className='w-1.5 h-1.5 rounded-full bg-zinc-600' />
-							)}
-							{PHASE_LABEL[s]}
-						</span>
+				<div className='mt-6 flex flex-wrap gap-4'>
+					{(
+						Object.entries(STATUS_CONFIG) as [
+							Status,
+							(typeof STATUS_CONFIG)[Status],
+						][]
+					).map(([key, cfg]) => (
+						<div
+							key={key}
+							className='flex items-center gap-1.5'>
+							<span
+								className={`h-1.5 w-1.5 rounded-full ${cfg.dot}`}
+							/>
+							<span className='text-xs text-zinc-500'>
+								{cfg.label}
+							</span>
+						</div>
 					))}
 				</div>
+			</div>
 
-				{/* Timeline */}
-				<div className='relative'>
-					{/* Vertical line */}
-					<div className='absolute left-0 top-3 bottom-3 w-px bg-linear-to-b from-violet-500/40 via-white/10 to-transparent hidden md:block' />
-
-					<div className='space-y-16'>
-						{PHASES.map((phase, pi) => (
-							<section
-								key={phase.phase}
-								className='md:pl-8'>
-								{/* Phase header */}
-								<div className='flex items-center gap-3 mb-8'>
-									<div
-										className='hidden md:flex absolute left-0 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-violet-500 bg-[#09090b]'
-										style={{ marginTop: '0.15rem' }}
-									/>
-									<div>
-										<div className='flex items-center gap-3 flex-wrap'>
-											<h2 className='text-lg font-bold text-white'>
-												{phase.phase}
-											</h2>
-											<span
-												className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold border ${pi === 0 ? PHASE_CLASS['in-progress'] : PHASE_CLASS['planned']}`}>
-												{phase.period}
-											</span>
-										</div>
+			{/* Timeline */}
+			<div className='mx-auto max-w-3xl space-y-4 px-6 pb-32'>
+				{ROADMAP.map((q) => {
+					const cfg = STATUS_CONFIG[q.status];
+					return (
+						<div
+							key={q.quarter}
+							className={`rounded-2xl border p-6 ${cfg.card}`}>
+							{/* Header */}
+							<div className='mb-4 flex flex-wrap items-start gap-3'>
+								<div className='flex flex-1 flex-col gap-1'>
+									<div className='flex flex-wrap items-center gap-2'>
+										<span
+											className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${cfg.badge}`}>
+											{q.quarter}
+										</span>
+										<span
+											className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${cfg.pill}`}>
+											{cfg.label}
+										</span>
 									</div>
+									<h2 className='text-base font-semibold text-white'>
+										{q.title}
+									</h2>
+									<p className='text-xs leading-relaxed text-zinc-500'>
+										{q.description}
+									</p>
 								</div>
+							</div>
 
-								{/* Items */}
-								<div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
-									{phase.items.map((item) => (
-										<div
-											key={item.title}
-											className='group flex items-start gap-3 p-4 rounded-xl border border-white/[0.07] hover:border-white/15 transition-all'
-											style={{
-												background:
-													'rgba(255,255,255,0.02)',
-											}}>
-											<div className='shrink-0 mt-0.5'>
-												{item.status === 'done' && (
-													<div
-														className='w-5 h-5 rounded-full flex items-center justify-center'
-														style={{
-															background:
-																'rgba(52,211,153,0.15)',
-														}}>
-														<svg
-															className='w-3 h-3 text-emerald-400'
-															viewBox='0 0 24 24'
-															fill='none'
-															stroke='currentColor'
-															strokeWidth='3'>
-															<path
-																strokeLinecap='round'
-																strokeLinejoin='round'
-																d='m4.5 12.75 6 6 9-13.5'
-															/>
-														</svg>
-													</div>
-												)}
-												{item.status ===
-													'in-progress' && (
-													<div
-														className='w-5 h-5 rounded-full flex items-center justify-center'
-														style={{
-															background:
-																'rgba(167,139,250,0.15)',
-														}}>
-														<span className='w-2 h-2 rounded-full bg-violet-400 animate-pulse' />
-													</div>
-												)}
-												{item.status === 'planned' && (
-													<div className='w-5 h-5 rounded-full flex items-center justify-center border border-white/10'>
-														<span className='w-1.5 h-1.5 rounded-full bg-zinc-600' />
-													</div>
-												)}
-											</div>
-											<div className='flex-1 min-w-0'>
-												<p className='text-sm font-semibold text-zinc-200 group-hover:text-white transition-colors mb-0.5'>
-													{item.title}
-												</p>
-												<p className='text-xs text-zinc-600 leading-relaxed'>
-													{item.description}
-												</p>
-											</div>
-										</div>
-									))}
-								</div>
-							</section>
-						))}
-					</div>
-				</div>
+							{/* Items */}
+							<ul className='grid gap-1.5 sm:grid-cols-2'>
+								{q.items.map((item) => {
+									const itemStatus = item.status ?? q.status;
 
-				{/* CTA */}
-				<div
-					className='mt-20 rounded-2xl border border-white/8 p-8 flex flex-col md:flex-row items-start md:items-center gap-6'
-					style={{
-						background:
-							'linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.08))',
-					}}>
-					<div className='flex-1'>
-						<p className='text-sm font-semibold text-zinc-200 mb-1'>
-							Have a suggestion?
-						</p>
-						<p className='text-xs text-zinc-500'>
-							Request a component or feature by opening a GitHub
-							issue. Every idea is reviewed by the core team.
-						</p>
-					</div>
-					<a
-						href='https://github.com/kivora-ui/kivora/issues/new'
-						target='_blank'
-						rel='noopener noreferrer'
-						className='shrink-0 px-4 py-2 rounded-lg text-xs font-semibold text-white border border-white/10 hover:border-white/25 transition-all'
-						style={{ background: 'rgba(255,255,255,0.07)' }}>
-						Open an issue →
-					</a>
-				</div>
-			</main>
+									return (
+										<li
+											key={item.label}
+											className='flex items-start gap-2 text-sm text-zinc-400'>
+											<ItemDot status={itemStatus} />
+											<span
+												className={
+													itemStatus === 'done'
+														? 'line-through text-zinc-600'
+														: ''
+												}>
+												{item.label}
+											</span>
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
