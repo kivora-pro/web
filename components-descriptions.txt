@@ -1,0 +1,87 @@
+﻿button|Trigger actions and navigation. Supports five visual variants, five sizes, loading state, left/right sections and full-width layout.
+action-icon|A square icon-only button. Shares the same variant and size system as Button. Requires aria-label for accessibility.
+burger|Un botón hamburguesa animado que alterna entre tres líneas y un ×. Ideal para abrir/cerrar menús de navegación móvil.
+close-button|Botón cuadrado con icono × preconfigurado. Usado internamente en Modal, Drawer, Alert y Notification. Acepta los mismos tamaños que Button.
+copy-button|Componente headless que copia texto al portapapeles. Usa render props para entregar el estado copied y la función copy a cualquier elemento hijo.
+file-button|Componente headless que abre el selector de archivos del sistema. Usa render props: entrega onClick al elemento hijo para disparar el input oculto.
+unstyled-button|Botón base sin estilos visuales. Elimina los estilos nativos del navegador manteniendo la accesibilidad. Punto de partida para crear botones completamente personalizados.
+text-input|A single-line text field with label, description, error states and five size variants.
+password-input|A password field with a built-in show/hide visibility toggle. Supports the full TextInput prop surface.
+checkbox|A checkbox input with label, description and error support. Supports indeterminate state and left/right label position.
+switch|An animated boolean toggle. Supports on/off labels, thumb icons, five sizes and left/right label position.
+select|A native HTML select with a styled wrapper. Accepts a flat array of strings or option objects with value, label and group.
+textarea|Multi-line text input with optional autosize, min/max rows, and resize control.
+number-input|Numeric input with increment/decrement controls, prefix/suffix, decimal scale, and clamp behaviour.
+radio|Single-choice selection. Use RadioGroup to manage state across multiple Radio items.
+slider|Range selection control with optional marks, always-on label, and disabled state.
+rating|Star (or custom symbol) rating picker with fractional support and read-only mode.
+chip|Toggle-style checkbox/radio that looks like a badge. Use ChipGroup for managed single or multi selection.
+segmented-control|Pill-style tab selector where exactly one option is active at a time.
+tags-input|Free-entry tags field. Press Enter or a split char to add a tag; backspace removes the last.
+pin-input|One-time code / PIN entry with auto-focus-next, mask, and alphanumeric/number modes.
+color-input|Color picker as an inline field (ColorInput) or standalone swatch grid + picker (ColorPicker).
+multi-select|Select multiple values from a dropdown. Supports search, clearable, max values, and hiding picked options.
+autocomplete|Text input with a live dropdown of suggestions filtered as the user types.
+file-input|Stylised file picker button. Supports single/multiple files, accept filter, and clearable state.
+json-input|Textarea that validates JSON content and optionally auto-formats on blur.
+avatar|A user thumbnail that shows an image or falls back to text initials/an icon. Supports four visual variants and five sizes.
+badge|A compact label for status communication. Five variants, five sizes, optional left/right sections and circle mode.
+card|A surface container with configurable shadow, radius, border and padding. Animates in with a subtle fade-slide.
+progress|A horizontal progress bar. Supports striped style, animation, multiple colour sections and an optional label.
+skeleton|A placeholder that represents content while loading. Toggle visible to reveal underlying children.
+accordion|Componente compuesto de acordeón con animación de apertura/cierre. Soporta modo múltiple, cuatro variantes visuales y posición del chevron configurable.
+table|Tabla de datos semántica con soporte para filas rayadas (striped), resaltado al hover, bordes de columna y encabezado sticky.
+timeline|Lista de eventos vertical con línea conectora y bullets. El prop active marca qué pasos están completados.
+indicator|Badge posicionado sobre un elemento hijo. Soporta modo dot, etiqueta de conteo, animación de procesamiento y 9 posiciones.
+pill|Etiqueta compacta con forma de píldora. Opcionalmente incluye botón de eliminar. Base de TagsInput y MultiSelect.
+kbd|Elemento visual para mostrar teclas del teclado o atajos de teclado. Renderiza un <kbd> semántico con estilos de tecla.
+list|Lista ordenada o desordenada con soporte para iconos personalizados por ítem, cinco tallas y espaciado configurable.
+number-formatter|Formatea números con separador de miles, decimales, prefijo/sufijo y soporte para moneda y porcentaje via Intl.NumberFormat.
+ring-progress|Gráfico circular SVG de progreso. Soporta múltiples secciones de color, puntas redondeadas y un elemento label central.
+semi-circle-progress|Indicador de progreso en semicírculo SVG. Ideal para mostrar métricas como velocímetros o gauges.
+spoiler|Recorta contenido largo a una altura máxima y expande/colapsa con un botón de texto configurable.
+color-swatch|Círculo o cuadrado de color para paletas y selectores. Renderiza un div semántico con aria-label del color.
+alert|An inline notification for status messages. Supports four visual variants, a title, an icon and a close button.
+loader|An animated loading indicator in three styles: spinning oval, bouncing bars and bouncing dots.
+toast|Imperative toast notifications powered by Sonner. Place <Toaster /> once in your layout, then call toast() from anywhere.
+notification|⚠️ Deprecated — usa toast() en su lugar. Componente de notificación inline con entrada animada. Muestra título, mensaje, icono opcional, estado de carga y botón de cierre.
+loading-overlay|Overlay absoluto con un Loader centrado. Se posiciona sobre el contenedor relativo más cercano. Ideal para bloquear secciones durante operaciones asíncronas.
+text|Polymorphic text element with size, weight, color, truncation and line-clamp helpers.
+title|Semantic heading element (h1–h6) with pre-configured size and weight per level.
+blockquote|Styled blockquote with a left brand border, optional icon and cite attribution.
+code|Inline or block code with monospace font and subtle background.
+highlight|Wraps matched substrings inside a highlight mark element. Supports single or multiple terms.
+mark|Inline highlight wrapper rendered as <mark> with optional custom color.
+tabs|Compound tabs with animated indicator. Three variants (default, outline, pills), horizontal/vertical orientation and controlled/uncontrolled modes.
+anchor|Styled anchor element with underline control and polymorphic rendering.
+breadcrumbs|Accessible breadcrumb trail with a customisable separator.
+nav-link|Sidebar-style nav item with label, description, left/right sections and collapsible children.
+pagination|Page-number control with siblings, boundaries, size variants and optional edge/control buttons.
+stepper|Multi-step progress indicator with horizontal/vertical layout, completed icons and step-click navigation.
+table-of-contents|Vertical link list that highlights the active section; supports indented hierarchy via the order field.
+stack|Vertical flex container — stacks children in a column with configurable gap, alignment, and justify.
+group|Horizontal flex container — rows children side-by-side with gap, wrapping, grow, and justify support.
+flex|Fully configurable flex container. When you need direction, rowGap/columnGap, or fine-grained flex control.
+grid|12-column CSS grid layout. Use Grid.Col with span and offset to place children precisely.
+simple-grid|Equal-column CSS grid. Simpler than Grid when each cell has the same width.
+center|Centers children both horizontally and vertically. Inline mode uses inline-flex.
+container|Constrains content width to a named size and centers it horizontally with auto margins.
+space|Renders an invisible spacer div with a specific height (h) or width (w) to add whitespace between elements.
+aspect-ratio|Preserves a given width-to-height ratio. Ideal for images, videos, and maps that must not distort.
+app-shell|Full-page layout primitive with sticky header, collapsible navbar, optional aside, and footer slots.
+overlay|Full-coverage dimming layer with optional blur, gradient and click handler. Used as a backdrop for modals and drawers.
+modal|Accessible dialog with animated backdrop, compound header/body/footer, size variants and focus trap.
+drawer|Slide-in panel from any viewport edge with an animated backdrop.
+tooltip|Hover-triggered label that appears around its trigger element with optional arrow and delay.
+popover|Click-triggered floating panel. Compound API: Popover → PopoverTarget + PopoverDropdown.
+hover-card|Hover-triggered floating card. Compound API: HoverCard → HoverCardTarget + HoverCardDropdown.
+menu|Dropdown context menu. Compound API: Menu → MenuTarget + MenuDropdown with MenuItem, MenuLabel, MenuDivider.
+dialog|Compact floating panel fixed to a viewport corner. Ideal for confirmations, quick notes and mini forms.
+box|Polymorphic base element. Renders any HTML tag or React component while forwarding refs and spreading props.
+paper|Card-like surface with configurable shadow, border-radius, padding, and optional border.
+divider|Horizontal or vertical separator with optional label, variant (solid/dashed/dotted), and custom thickness.
+scroll-area|Constrained scroll container with configurable overflow behaviour and scroll position callback.
+collapse|Animate-in/out height transition for expandable sections. Controlled via the `in` prop.
+theme-icon|Styled icon container in five visual variants matching ActionIcon but non-interactive.
+transition|Render-prop animation wrapper. Mounts/unmounts children with CSS transitions using built-in or custom presets.
+affix|Fixed-position element rendered via Portal. Useful for scroll-to-top buttons, floating actions, or persistent overlays.

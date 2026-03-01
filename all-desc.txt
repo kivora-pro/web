@@ -1,0 +1,581 @@
+﻿button|Button|Trigger actions and navigation. Supports five visual variants, five sizes, loading state, left/right sections and full-width layout.
+button|variant|Visual style of the button.
+button|size|Controls padding and font size.
+button|loading|Shows a spinner and disables the button.
+button|disabled|Prevents interaction and applies reduced opacity.
+button|fullWidth|Expands to fill its container.
+button|leftSection|Content rendered to the left of the label.
+button|rightSection|Content rendered to the right of the label.
+button|href|Renders the button as an <a> tag.
+button|component|Override the root element.
+action-icon|ActionIcon|A square icon-only button. Shares the same variant and size system as Button. Requires aria-label for accessibility.
+action-icon|aria-label|Required accessible name for the button.
+action-icon|variant|Visual style.
+action-icon|size|Controls the element size.
+action-icon|loading|Shows a spinner and disables the button.
+action-icon|disabled|Prevents interaction.
+action-icon|href|Renders as an <a> tag.
+action-icon|component|Override the root element.
+burger|Burger|Un botón hamburguesa animado que alterna entre tres líneas y un ×. Ideal para abrir/cerrar menús de navegación móvil.
+burger|opened|Requerido. Controla si el menú está abierto (muestra ×) o cerrado (muestra ≡).
+burger|size|Tamaño del icono hamburguesa (18 / 24 / 32 px).
+burger|lineSize|Grosor en px de las líneas. Por defecto se deriva del size.
+burger|aria-label|Etiqueta accesible (se autogestiona según opened).
+burger|onClick|Handler nativo de click. Úsalo para actualizar el estado opened.
+burger|disabled|Evita la interacción y aplica opacidad reducida.
+close-button|CloseButton|Botón cuadrado con icono × preconfigurado. Usado internamente en Modal, Drawer, Alert y Notification. Acepta los mismos tamaños que Button.
+close-button|size|Controla el tamaño del botón e icono.
+close-button|aria-label|Etiqueta accesible del botón.
+close-button|disabled|Evita la interacción.
+close-button|onClick|Handler de click nativo.
+copy-button|CopyButton|Componente headless que copia texto al portapapeles. Usa render props para entregar el estado copied y la función copy a cualquier elemento hijo.
+copy-button|value|Requerido. Texto que se copiará al portapapeles.
+copy-button|timeout|Milisegundos hasta que copied vuelve a false.
+copy-button|children|Render prop. Recibe copied y copy para construir la UI.
+file-button|FileButton|Componente headless que abre el selector de archivos del sistema. Usa render props: entrega onClick al elemento hijo para disparar el input oculto.
+file-button|onChange|Requerido. Se llama con el archivo o array de archivos seleccionados.
+file-button|children|Render prop. Recibe onClick para conectar el trigger.
+file-button|accept|Tipos MIME aceptados, p. ej. "image/*" o ".pdf,.docx".
+file-button|multiple|Permite seleccionar múltiples archivos.
+file-button|capture|En móvil, indica qué cámara usar.
+file-button|resetRef|Ref imperativa para resetear el input manualmente.
+unstyled-button|UnstyledButton|Botón base sin estilos visuales. Elimina los estilos nativos del navegador manteniendo la accesibilidad. Punto de partida para crear botones completamente personalizados.
+unstyled-button|component|Sobreescribe el elemento raíz (p. ej. "a", "div").
+unstyled-button|href|Si se proporciona, renderiza como <a>.
+unstyled-button|className|Clases CSS para aplicar tus propios estilos.
+unstyled-button|children|Contenido del botón.
+text-input|TextInput|A single-line text field with label, description, error states and five size variants.
+text-input|label|Visible label rendered above the input.
+text-input|description|Helper text shown below the label.
+text-input|error|Error message; puts the input into error state.
+text-input|placeholder|Placeholder text shown when empty.
+text-input|size|Controls input height and font size.
+text-input|variant|Visual style of the input.
+text-input|required|Marks the field as required.
+text-input|withAsterisk|Shows an asterisk next to the label.
+text-input|disabled|Makes the input non-interactive.
+password-input|PasswordInput|A password field with a built-in show/hide visibility toggle. Supports the full TextInput prop surface.
+password-input|label|Visible label rendered above the input.
+password-input|description|Helper text shown below the label.
+password-input|error|Error message; puts the input into error state.
+password-input|visible|Controlled visibility of the password text.
+password-input|defaultVisible|Initial visibility in uncontrolled mode.
+password-input|onVisibilityChange|Called when the toggle is clicked.
+password-input|visibilityToggleLabel|Accessible label for the toggle button.
+password-input|size|Controls input height and font size.
+checkbox|Checkbox|A checkbox input with label, description and error support. Supports indeterminate state and left/right label position.
+checkbox|label|Accessible label next to the checkbox.
+checkbox|description|Additional helper text.
+checkbox|error|Error message.
+checkbox|checked|Controlled checked state.
+checkbox|indeterminate|Shows the indeterminate () icon.
+checkbox|size|Controls the checkbox size.
+checkbox|labelPosition|Position of the label relative to the box.
+checkbox|disabled|Prevents interaction.
+switch|Switch|An animated boolean toggle. Supports on/off labels, thumb icons, five sizes and left/right label position.
+switch|label|Accessible label next to the switch.
+switch|description|Helper text shown below.
+switch|error|Error message.
+switch|checked|Controlled on/off state.
+switch|onChange|Native change event callback.
+switch|size|Controls track and thumb size.
+switch|onLabel|Label shown inside the track when on.
+switch|offLabel|Label shown inside the track when off.
+switch|thumbIcon|Icon rendered inside the thumb.
+switch|labelPosition|Position of the label.
+switch|disabled|Prevents interaction.
+select|Select|A native HTML select with a styled wrapper. Accepts a flat array of strings or option objects with value, label and group.
+select|data|Required. Array of options to display.
+select|label|Visible label above the select.
+select|description|Helper text.
+select|error|Error message.
+select|placeholder|Placeholder option.
+select|size|Controls height and font size.
+select|variant|Visual style.
+select|required|Marks the field as required.
+select|disabled|Prevents interaction.
+textarea|Textarea|Multi-line text input with optional autosize, min/max rows, and resize control.
+textarea|label|Label shown above the textarea.
+textarea|autosize|Grows with content up to maxRows.
+textarea|minRows|Minimum visible rows.
+textarea|maxRows|Maximum rows before scrolling (requires autosize).
+textarea|resize|CSS resize handle direction.
+textarea|error|Error message displayed below.
+number-input|NumberInput|Numeric input with increment/decrement controls, prefix/suffix, decimal scale, and clamp behaviour.
+number-input|value|Controlled value.
+number-input|min|Minimum allowed value.
+number-input|max|Maximum allowed value.
+number-input|step|Increment step.
+number-input|prefix|Text prepended to the value.
+number-input|suffix|Text appended to the value.
+number-input|hideControls|Hides the +/− buttons.
+number-input|decimalScale|Max number of decimal places.
+radio|Radio / RadioGroup|Single-choice selection. Use RadioGroup to manage state across multiple Radio items.
+radio|value|Value of this radio button.
+radio|label|Label text.
+radio|size|Size of the radio circle.
+radio|labelPosition|Label side relative to the control.
+radio|disabled|Disables the radio button.
+slider|Slider|Range selection control with optional marks, always-on label, and disabled state.
+slider|value|Controlled value.
+slider|min|Minimum value.
+slider|max|Maximum value.
+slider|step|Slider step.
+slider|marks|Values where tick marks appear.
+slider|label|Tooltip content while dragging.
+slider|labelAlwaysOn|Always show the label tooltip.
+slider|disabled|Prevents interaction.
+rating|Rating|Star (or custom symbol) rating picker with fractional support and read-only mode.
+rating|value|Controlled rating value.
+rating|count|Total number of stars.
+rating|fractions|Subdivisions per star (e.g. 2 = half-stars).
+rating|size|Star size.
+rating|readOnly|Disables interaction.
+chip|Chip / ChipGroup|Toggle-style checkbox/radio that looks like a badge. Use ChipGroup for managed single or multi selection.
+chip|variant|Visual style.
+chip|size|Chip size.
+chip|checked|Controlled checked state.
+chip|icon|Icon shown when selected.
+segmented-control|SegmentedControl|Pill-style tab selector where exactly one option is active at a time.
+segmented-control|data|Options to render.
+segmented-control|value|Controlled active value.
+segmented-control|size|Height and font size of the segments.
+segmented-control|fullWidth|Stretches to full container width.
+segmented-control|orientation|Layout direction.
+tags-input|TagsInput|Free-entry tags field. Press Enter or a split char to add a tag; backspace removes the last.
+tags-input|value|Controlled list of tags.
+tags-input|maxTags|Maximum number of tags allowed.
+tags-input|allowDuplicates|Allow the same tag more than once.
+tags-input|splitChars|Characters that trigger tag creation.
+pin-input|PinInput|One-time code / PIN entry with auto-focus-next, mask, and alphanumeric/number modes.
+pin-input|length|Number of input cells.
+pin-input|type|Accepted character type.
+pin-input|mask|Hides entered characters like a password.
+pin-input|onComplete|Fires when all cells are filled.
+color-input|ColorInput / ColorPicker|Color picker as an inline field (ColorInput) or standalone swatch grid + picker (ColorPicker).
+color-input|value|Controlled hex/rgb/hsl color string.
+color-input|swatches|Preset color swatches shown below the picker.
+color-input|format|Output color format.
+color-input|withPicker|Show the gradient canvas picker.
+multi-select|MultiSelect|Select multiple values from a dropdown. Supports search, clearable, max values, and hiding picked options.
+multi-select|data|Options to display.
+multi-select|value|Controlled selected values.
+multi-select|maxValues|Limit number of selectable items.
+multi-select|searchable|Enables filtering by typing.
+multi-select|clearable|Shows a clear-all button.
+multi-select|hidePickedOptions|Removes selected items from the dropdown list.
+autocomplete|Autocomplete|Text input with a live dropdown of suggestions filtered as the user types.
+autocomplete|data|Suggestion list.
+autocomplete|limit|Max suggestions shown at once.
+autocomplete|onOptionSubmit|Fires when a suggestion is selected.
+file-input|FileInput|Stylised file picker button. Supports single/multiple files, accept filter, and clearable state.
+file-input|value|Controlled file value.
+file-input|multiple|Allow picking multiple files.
+file-input|accept|MIME types / extensions filter (e.g. "image/*").
+file-input|clearable|Shows an × to clear the selection.
+file-input|placeholder|Text shown when no file is selected.
+json-input|JsonInput|Textarea that validates JSON content and optionally auto-formats on blur.
+json-input|value|Controlled JSON string.
+json-input|formatOnBlur|Pretty-prints valid JSON when focus leaves.
+json-input|validationError|Error shown when JSON is malformed.
+json-input|minRows|Minimum visible rows.
+avatar|Avatar|A user thumbnail that shows an image or falls back to text initials/an icon. Supports four visual variants and five sizes.
+avatar|src|URL of the user image.
+avatar|alt|Alt text; first character used as fallback initial.
+avatar|children|Fallback content (e.g. text initials).
+avatar|size|Controls the diameter.
+avatar|radius|Border radius.
+avatar|variant|Visual fill style.
+avatar|color|Custom color token or CSS value.
+avatar|component|Override the root element.
+avatar|imageProps|Extra props spread onto the <img> element.
+badge|Badge|A compact label for status communication. Five variants, five sizes, optional left/right sections and circle mode.
+badge|variant|Visual style variant.
+badge|size|Controls height and font size.
+badge|radius|Border radius (fully rounded by default).
+badge|color|Custom color token or CSS value.
+badge|fullWidth|Expands to fill its container.
+badge|circle|Forces equal width/height (aspect-square).
+badge|leftSection|Content before the label.
+badge|rightSection|Content after the label.
+card|Card|A surface container with configurable shadow, radius, border and padding. Animates in with a subtle fade-slide.
+card|shadow|Drop shadow intensity.
+card|radius|Border radius token.
+card|withBorder|Adds a 1px border.
+card|padding|Inner padding (CSS value or number in px).
+card|component|Override the root element (skips animation).
+progress|Progress|A horizontal progress bar. Supports striped style, animation, multiple colour sections and an optional label.
+progress|value|Progress percentage (0–100).
+progress|color|Bar fill colour (CSS value or token).
+progress|size|Bar thickness in px.
+progress|radius|Border radius.
+progress|striped|Applies a striped pattern to the bar.
+progress|animated|Adds a pulse animation.
+progress|label|Text rendered inside the filled portion.
+progress|sections|Render multiple coloured segments.
+skeleton|Skeleton|A placeholder that represents content while loading. Toggle visible to reveal underlying children.
+skeleton|height|Height of the skeleton block.
+skeleton|width|Width of the skeleton block.
+skeleton|circle|Forces a circular shape.
+skeleton|radius|Border radius override.
+skeleton|animate|Enables the pulse animation.
+skeleton|visible|When false, renders children instead.
+accordion|Accordion|Componente compuesto de acordeón con animación de apertura/cierre. Soporta modo múltiple, cuatro variantes visuales y posición del chevron configurable.
+accordion|value|Valor (o valores) activo en modo controlado.
+accordion|defaultValue|Valor inicial en modo no controlado.
+accordion|onChange|Llamado cuando cambia el ítem abierto.
+accordion|multiple|Permite abrir varios ítems al mismo tiempo.
+accordion|variant|Estilo visual del acordeón.
+accordion|chevronPosition|Posición del icono chevron.
+accordion|chevron|Icono personalizado para el chevron.
+accordion|AccordionItem value|Requerido. Identificador único del ítem.
+accordion|AccordionItem disabled|Deshabilita el ítem.
+accordion|AccordionControl icon|Icono a la izquierda del título.
+table|Table|Tabla de datos semántica con soporte para filas rayadas (striped), resaltado al hover, bordes de columna y encabezado sticky.
+table|striped|Aplica color de fondo alternado a las filas.
+table|highlightOnHover|Resalta la fila al pasar el cursor.
+table|withTableBorder|Añade borde exterior a la tabla.
+table|withColumnBorders|Añade separadores verticales entre columnas.
+table|withRowBorders|Añade separadores horizontales entre filas.
+table|stickyHeader|Fija el encabezado al hacer scroll.
+table|horizontalSpacing|Padding horizontal de las celdas.
+table|verticalSpacing|Padding vertical de las celdas.
+timeline|Timeline|Lista de eventos vertical con línea conectora y bullets. El prop active marca qué pasos están completados.
+timeline|active|Índice del último paso completado (todos los anteriores se marcan completados).
+timeline|bulletSize|Diámetro en px de los bullets.
+timeline|lineWidth|Grosor en px de la línea conectora.
+timeline|color|Color de los bullets y la línea activa.
+timeline|align|Alineación de los ítems.
+timeline|TimelineItem title|Título del paso.
+timeline|TimelineItem bullet|Contenido del bullet (icono, número, etc.).
+timeline|TimelineItem lineVariant|Estilo de la línea conectora del ítem.
+indicator|Indicator|Badge posicionado sobre un elemento hijo. Soporta modo dot, etiqueta de conteo, animación de procesamiento y 9 posiciones.
+indicator|label|Contenido del indicador (texto o número).
+indicator|count|Número a mostrar (alternativa a label).
+indicator|dot|Muestra un punto sin contenido.
+indicator|size|Tamaño en px del indicador.
+indicator|color|Color CSS del indicador.
+indicator|position|Posición: top/middle/bottom × start/center/end.
+indicator|processing|Añade animación pulse para indicar actividad.
+indicator|disabled|Oculta el indicador.
+indicator|withBorder|Añade borde blanco alrededor.
+pill|Pill|Etiqueta compacta con forma de píldora. Opcionalmente incluye botón de eliminar. Base de TagsInput y MultiSelect.
+pill|size|Controla altura, padding y tamaño de fuente.
+pill|radius|Radio de borde (totalmente redondeado por defecto).
+pill|withRemoveButton|Muestra un botón × para eliminar.
+pill|onRemove|Llamado al pulsar el botón de eliminar.
+pill|disabled|Deshabilita el botón de eliminar.
+kbd|Kbd|Elemento visual para mostrar teclas del teclado o atajos de teclado. Renderiza un <kbd> semántico con estilos de tecla.
+kbd|size|Controla el tamaño de fuente y padding.
+kbd|children|Nombre de la tecla o símbolo (⌘, ⇧, etc.).
+list|List|Lista ordenada o desordenada con soporte para iconos personalizados por ítem, cinco tallas y espaciado configurable.
+list|type|Renderiza <ol> u <ul>.
+list|withPadding|Aplica padding-left para la sangría.
+list|size|Tamaño de fuente de los ítems.
+list|spacing|Espacio entre ítems (gap).
+list|icon|Icono global para todos los ítems.
+list|center|Alinea verticalmente el icono con el texto.
+list|ListItem icon|Icono individual que sobreescribe el global.
+number-formatter|NumberFormatter|Formatea números con separador de miles, decimales, prefijo/sufijo y soporte para moneda y porcentaje via Intl.NumberFormat.
+number-formatter|value|Número a formatear.
+number-formatter|thousandSeparator|Separador de miles. true usa el locale del browser.
+number-formatter|decimalScale|Número máximo de decimales.
+number-formatter|fixedDecimalScale|Rellena con ceros hasta decimalScale.
+number-formatter|prefix|Cadena antepuesta al número.
+number-formatter|suffix|Cadena pospuesta al número.
+number-formatter|style|Modo de formateo Intl.
+number-formatter|currency|Código ISO 4217 (solo cuando style="currency").
+number-formatter|locale|Locale BCP 47 para Intl (p. ej. "es-ES").
+ring-progress|RingProgress|Gráfico circular SVG de progreso. Soporta múltiples secciones de color, puntas redondeadas y un elemento label central.
+ring-progress|sections|Requerido. Array de segmentos con porcentaje y color.
+ring-progress|size|Diámetro total del SVG en px.
+ring-progress|thickness|Grosor del anillo en px.
+ring-progress|roundCaps|Aplica strokeLinecap="round" a los segmentos.
+ring-progress|label|Contenido centrado dentro del anillo.
+ring-progress|rootColor|Color del círculo de fondo.
+semi-circle-progress|SemiCircleProgress|Indicador de progreso en semicírculo SVG. Ideal para mostrar métricas como velocímetros o gauges.
+semi-circle-progress|value|Requerido. Porcentaje de progreso (0-100).
+semi-circle-progress|size|Ancho del SVG en px.
+semi-circle-progress|thickness|Grosor del arco en px.
+semi-circle-progress|color|Color del arco de progreso.
+semi-circle-progress|emptySegmentColor|Color del arco vacío.
+semi-circle-progress|orientation|Dirección del semicírculo.
+semi-circle-progress|label|Contenido centrado debajo del arco.
+spoiler|Spoiler|Recorta contenido largo a una altura máxima y expande/colapsa con un botón de texto configurable.
+spoiler|maxHeight|Requerido. Altura máxima visible en px antes de colapsar.
+spoiler|showLabel|Texto del botón cuando el contenido está colapsado.
+spoiler|hideLabel|Texto del botón cuando el contenido está expandido.
+spoiler|initiallyExpanded|Si true, el contenido comienza expandido.
+spoiler|transitionDuration|Duración de la animación en ms.
+color-swatch|ColorSwatch|Círculo o cuadrado de color para paletas y selectores. Renderiza un div semántico con aria-label del color.
+color-swatch|color|Requerido. Valor CSS del color (hex, rgb, hsl, etc.).
+color-swatch|size|Tamaño en px del swatch.
+color-swatch|radius|Radio de borde (círculo por defecto).
+color-swatch|withShadow|Añade sombra para resaltar colores claros.
+color-swatch|component|Elemento raíz personalizado.
+alert|Alert|An inline notification for status messages. Supports four visual variants, a title, an icon and a close button.
+alert|variant|Visual style.
+alert|title|Bold heading rendered inside the alert.
+alert|icon|Icon rendered to the left of the content.
+alert|withCloseButton|Shows a close () button in the top-right corner.
+alert|onClose|Called when the close button is clicked.
+alert|color|Custom colour override.
+alert|radius|Border radius override.
+loader|Loader|An animated loading indicator in three styles: spinning oval, bouncing bars and bouncing dots.
+loader|type|Visual style of the loader.
+loader|size|Diameter/height in px.
+loader|color|Colour of the loader.
+loader|aria-label|Accessible label for screen readers.
+toast|Toast|Imperative toast notifications powered by Sonner. Place <Toaster /> once in your layout, then call toast() from anywhere.
+toast|toast(message)|Show a default toast.
+toast|toast.success(message)|Show a success toast.
+toast|toast.error(message)|Show an error toast.
+toast|toast.warning(message)|Show a warning toast.
+toast|toast.info(message)|Show an info toast.
+toast|toast.loading(message)|Show a loading toast; returns the id.
+toast|toast.dismiss(id?)|Dismiss one or all active toasts.
+toast|toast.promise(promise, labels)|Tracks a promise with loading/success/error states.
+notification|Notification|⚠️ Deprecated — usa toast() en su lugar. Componente de notificación inline con entrada animada. Muestra título, mensaje, icono opcional, estado de carga y botón de cierre.
+notification|title|Encabezado en negrita de la notificación.
+notification|children|Cuerpo del mensaje.
+notification|icon|Icono a la izquierda del contenido.
+notification|loading|Muestra un Loader en lugar del icono.
+notification|withCloseButton|Muestra el botón × para cerrar.
+notification|onClose|Llamado al pulsar el botón de cierre.
+notification|withBorder|Añade borde exterior.
+notification|color|Color de acento del icono.
+notification|radius|Radio de borde.
+loading-overlay|LoadingOverlay|Overlay absoluto con un Loader centrado. Se posiciona sobre el contenedor relativo más cercano. Ideal para bloquear secciones durante operaciones asíncronas.
+loading-overlay|visible|Requerido. Controla si el overlay está visible.
+loading-overlay|loaderProps|Props pasadas al componente Loader interno.
+loading-overlay|overlayProps|Personaliza el fondo difuminado.
+loading-overlay|zIndex|z-index del overlay.
+loading-overlay|transitionDuration|Duración de la animación de entrada/salida en ms.
+text|Text|Polymorphic text element with size, weight, color, truncation and line-clamp helpers.
+text|size|Font size preset.
+text|fw|Font weight.
+text|c|Text color (any CSS value).
+text|truncate|Clip overflowing text with an ellipsis.
+text|lineClamp|Clamp text after N lines.
+text|inline|Render as inline element.
+text|span|Render as <span> instead of <p>.
+text|component|Polymorphic root element.
+title|Title|Semantic heading element (h1–h6) with pre-configured size and weight per level.
+title|order|Heading level rendered.
+title|size|Override the font-size CSS value.
+title|fw|Override font weight.
+title|c|Override text color.
+blockquote|Blockquote|Styled blockquote with a left brand border, optional icon and cite attribution.
+blockquote|cite|Attribution shown below the quote.
+blockquote|icon|Icon rendered at the top of the quote.
+code|Code|Inline or block code with monospace font and subtle background.
+code|children|Code to display. In block mode must be a string; inline accepts any ReactNode.
+code|block|Render as a code block with syntax highlighting instead of inline <code>.
+code|language|Highlight.js language for syntax highlighting (block mode only).
+code|showLineNumbers|Show line numbers (block mode only).
+code|copyable|Show a copy-to-clipboard button on hover.
+code|highlighterStyle|Syntax highlighter theme object from react-syntax-highlighter.
+code|highlighterProps|Extra props passed directly to SyntaxHighlighter (escape hatch).
+code|className|Additional CSS class.
+code|style|Inline styles applied to the root element.
+highlight|Highlight|Wraps matched substrings inside a highlight mark element. Supports single or multiple terms.
+highlight|highlight|Term(s) to highlight.
+highlight|highlightColor|Custom highlight background color.
+highlight|component|Element wrapping each matched term.
+mark|Mark|Inline highlight wrapper rendered as <mark> with optional custom color.
+mark|color|Custom background color for the mark.
+tabs|Tabs|Compound tabs with animated indicator. Three variants (default, outline, pills), horizontal/vertical orientation and controlled/uncontrolled modes.
+tabs|defaultValue|Initially selected tab (uncontrolled).
+tabs|value|Controlled active tab value.
+tabs|onChange|Called when a tab is selected.
+tabs|variant|Visual style of the tabs.
+tabs|orientation|Layout direction.
+tabs|keepMounted|Keep inactive panels in the DOM.
+tabs|Tabs.List grow|Make tabs expand to fill available width.
+tabs|Tabs.Tab value|Required identifier for the tab.
+tabs|Tabs.Panel value|Must match a Tabs.Tab value.
+anchor|Anchor|Styled anchor element with underline control and polymorphic rendering.
+anchor|underline|When to show the underline decoration.
+anchor|href|Destination URL.
+anchor|component|Polymorphic root element.
+anchor|c|Override text color.
+breadcrumbs|Breadcrumbs|Accessible breadcrumb trail with a customisable separator.
+breadcrumbs|separator|Character or element rendered between items.
+breadcrumbs|separatorMargin|Space on each side of the separator.
+nav-link|NavLink|Sidebar-style nav item with label, description, left/right sections and collapsible children.
+nav-link|label|Main text content.
+nav-link|description|Secondary line below the label.
+nav-link|leftSection|Icon or element on the left.
+nav-link|rightSection|Element anchored to the right.
+nav-link|active|Marks the link as currently active.
+nav-link|variant|Active state visual style.
+nav-link|disabled|Prevents interaction.
+pagination|Pagination|Page-number control with siblings, boundaries, size variants and optional edge/control buttons.
+pagination|total|Total number of pages.
+pagination|value|Controlled active page.
+pagination|defaultValue|Initial page (uncontrolled).
+pagination|onChange|Called when a page is selected.
+pagination|siblings|Pages shown either side of active.
+pagination|boundaries|Pages always visible at start/end.
+pagination|withEdges|Show first / last page buttons.
+pagination|withControls|Show prev / next buttons.
+pagination|size|Button size.
+pagination|disabled|Disables all controls.
+stepper|Stepper|Multi-step progress indicator with horizontal/vertical layout, completed icons and step-click navigation.
+stepper|active|Index of the current active step (0-based).
+stepper|onStepClick|Called when a step icon is clicked.
+stepper|orientation|Layout direction.
+stepper|iconSize|Size in px of the step icon circles.
+stepper|Stepper.Step label|Title shown beside/below the icon.
+stepper|Stepper.Step description|Subtitle shown below the label.
+table-of-contents|TableOfContents|Vertical link list that highlights the active section; supports indented hierarchy via the order field.
+table-of-contents|links|Array of { value, label, order? } items.
+table-of-contents|active|value of the currently active link.
+table-of-contents|onItemClick|Called when a link is clicked.
+stack|Stack|Vertical flex container — stacks children in a column with configurable gap, alignment, and justify.
+stack|gap|Space between children.
+stack|align|Cross-axis alignment.
+stack|justify|Main-axis distribution.
+stack|component|Root element type.
+group|Group|Horizontal flex container — rows children side-by-side with gap, wrapping, grow, and justify support.
+group|gap|Space between children.
+group|align|Cross-axis alignment.
+group|justify|Main-axis distribution.
+group|wrap|Whether children wrap to next line.
+group|grow|Makes every child grow to equal width.
+flex|Flex|Fully configurable flex container. When you need direction, rowGap/columnGap, or fine-grained flex control.
+flex|direction|Flex direction.
+flex|gap|Uniform gap between children.
+flex|rowGap|Gap between rows.
+flex|columnGap|Gap between columns.
+flex|align|Cross-axis alignment.
+flex|justify|Main-axis distribution.
+flex|wrap|Flex wrap mode.
+grid|Grid / Grid.Col|12-column CSS grid layout. Use Grid.Col with span and offset to place children precisely.
+grid|columns|Total number of grid columns.
+grid|gutter|Gap between columns.
+grid|Col span|Number of columns the child occupies.
+grid|Col offset|Empty columns to skip before this child.
+simple-grid|SimpleGrid|Equal-column CSS grid. Simpler than Grid when each cell has the same width.
+simple-grid|cols|Number of columns (or responsive object).
+simple-grid|spacing|Column gap.
+simple-grid|verticalSpacing|Row gap (defaults to spacing when omitted).
+center|Center|Centers children both horizontally and vertically. Inline mode uses inline-flex.
+center|inline|Uses inline-flex instead of flex.
+center|component|Root element type.
+container|Container|Constrains content width to a named size and centers it horizontally with auto margins.
+container|size|Max-width preset (or arbitrary px value).
+container|fluid|Removes max-width constraint.
+space|Space|Renders an invisible spacer div with a specific height (h) or width (w) to add whitespace between elements.
+space|h|Vertical space (height).
+space|w|Horizontal space (width).
+aspect-ratio|AspectRatio|Preserves a given width-to-height ratio. Ideal for images, videos, and maps that must not distort.
+aspect-ratio|ratio|width ÷ height (e.g. 16/9, 4/3, 1).
+app-shell|AppShell|Full-page layout primitive with sticky header, collapsible navbar, optional aside, and footer slots.
+app-shell|header|Header configuration.
+app-shell|navbar|Sidebar navbar configuration.
+app-shell|aside|Right-side aside configuration.
+app-shell|footer|Footer configuration.
+app-shell|padding|Inner padding for the main content area.
+overlay|Overlay|Full-coverage dimming layer with optional blur, gradient and click handler. Used as a backdrop for modals and drawers.
+overlay|opacity|Background opacity (0–1).
+overlay|color|Overlay background color.
+overlay|blur|Backdrop blur in px.
+overlay|gradient|CSS gradient string instead of solid color.
+overlay|fixed|Use fixed positioning (viewport-wide).
+overlay|onClick|Handler when the overlay is clicked.
+modal|Modal|Accessible dialog with animated backdrop, compound header/body/footer, size variants and focus trap.
+modal|opened|Controls visibility.
+modal|onClose|Called when the modal requests to close.
+modal|title|Heading rendered in ModalHeader.
+modal|size|Max width of the modal panel.
+modal|centered|Vertically center the modal.
+modal|withCloseButton|Show the × close button.
+modal|closeOnClickOutside|Close when clicking the overlay.
+modal|closeOnEscape|Close on Escape key.
+modal|zIndex|CSS z-index of the modal.
+drawer|Drawer|Slide-in panel from any viewport edge with an animated backdrop.
+drawer|opened|Controls visibility.
+drawer|onClose|Called when the drawer requests to close.
+drawer|position|Which edge the drawer slides in from.
+drawer|size|Width (left/right) or height (top/bottom).
+drawer|title|Header title text.
+drawer|withCloseButton|Show the × close button.
+drawer|closeOnClickOutside|Close when clicking the overlay.
+drawer|closeOnEscape|Close on Escape key.
+tooltip|Tooltip|Hover-triggered label that appears around its trigger element with optional arrow and delay.
+tooltip|label|Text shown in the tooltip.
+tooltip|position|Where the tooltip appears.
+tooltip|withArrow|Show a pointing arrow.
+tooltip|delay|Open delay in ms.
+tooltip|disabled|Suppress the tooltip.
+tooltip|multiline|Allow text wrapping.
+tooltip|width|Max width of the tooltip.
+popover|Popover|Click-triggered floating panel. Compound API: Popover → PopoverTarget + PopoverDropdown.
+popover|opened|Controlled open state.
+popover|defaultOpened|Initial open state (uncontrolled).
+popover|onChange|Called when open state changes.
+popover|position|Preferred placement of the dropdown.
+popover|withArrow|Show arrow pointing to the trigger.
+popover|closeOnClickOutside|Close when clicking outside.
+popover|width|Dropdown width. "target" matches trigger.
+hover-card|HoverCard|Hover-triggered floating card. Compound API: HoverCard → HoverCardTarget + HoverCardDropdown.
+hover-card|openDelay|Delay before opening in ms.
+hover-card|closeDelay|Delay before closing in ms.
+hover-card|position|Preferred placement.
+hover-card|width|Card width.
+hover-card|withArrow|Show arrow.
+menu|Menu|Dropdown context menu. Compound API: Menu → MenuTarget + MenuDropdown with MenuItem, MenuLabel, MenuDivider.
+menu|opened|Controlled open state.
+menu|defaultOpened|Initial open state (uncontrolled).
+menu|closeOnItemClick|Auto-close when an item is clicked.
+menu|position|Preferred dropdown placement.
+menu|width|Dropdown width.
+menu|withArrow|Show arrow pointing to the trigger.
+dialog|Dialog|Compact floating panel fixed to a viewport corner. Ideal for confirmations, quick notes and mini forms.
+dialog|opened|Controls visibility.
+dialog|onClose|Called when the × button is clicked.
+dialog|title|Header title.
+dialog|position|Fixed position in the viewport.
+dialog|size|Max width of the panel.
+dialog|withCloseButton|Show the × close button.
+box|Box|Polymorphic base element. Renders any HTML tag or React component while forwarding refs and spreading props.
+box|component|HTML tag or React component to render as.
+paper|Paper|Card-like surface with configurable shadow, border-radius, padding, and optional border.
+paper|shadow|Drop shadow size.
+paper|radius|Border-radius preset.
+paper|withBorder|Adds a 1 px border.
+paper|p|Padding shorthand.
+divider|Divider|Horizontal or vertical separator with optional label, variant (solid/dashed/dotted), and custom thickness.
+divider|orientation|Direction of the divider.
+divider|label|Text shown in the middle of the line.
+divider|labelPosition|Where the label appears.
+divider|variant|Line style.
+divider|size|Thickness of the line.
+scroll-area|ScrollArea|Constrained scroll container with configurable overflow behaviour and scroll position callback.
+scroll-area|h|Fixed height of the scroll region.
+scroll-area|w|Fixed width of the scroll region.
+scroll-area|mah|Maximum height.
+scroll-area|type|When the scrollbar is visible.
+scroll-area|onScrollPositionChange|Fires on every scroll event.
+collapse|Collapse|Animate-in/out height transition for expandable sections. Controlled via the `in` prop.
+collapse|in|Whether the content is expanded.
+collapse|animateOpacity|Also fades opacity on transition.
+collapse|transitionDuration|Animation duration in ms.
+collapse|transitionTimingFunction|CSS timing function.
+theme-icon|ThemeIcon|Styled icon container in five visual variants matching ActionIcon but non-interactive.
+theme-icon|variant|Visual style.
+theme-icon|size|Width and height of the container.
+theme-icon|radius|Border-radius.
+theme-icon|color|Overrides the brand color token.
+transition|Transition|Render-prop animation wrapper. Mounts/unmounts children with CSS transitions using built-in or custom presets.
+transition|mounted|Whether the element is shown.
+transition|transition|Animation preset or custom object.
+transition|duration|Enter animation duration in ms.
+transition|exitDuration|Exit duration (defaults to duration).
+transition|keepMounted|Keep DOM node even when unmounted.
+affix|Affix|Fixed-position element rendered via Portal. Useful for scroll-to-top buttons, floating actions, or persistent overlays.
+affix|position|CSS fixed position offsets.
+affix|zIndex|Stack order.
+affix|withinPortal|Renders via Portal into document.body.
+
